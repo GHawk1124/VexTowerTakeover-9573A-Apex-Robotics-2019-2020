@@ -62,23 +62,23 @@ namespace Threads {
     static void entry();
   public:
 
+  #if DRIVE_TYPE == TANK
+  void Tank();
+  #endif
+
+  #if DRIVE_TYPE == SS_ARCADE
+  void SS_Arcade();
+  #endif
+
+  #if DRIVE_TYPE == TS_Arcade
+  void TS_Arcade();
+  #endif
+
   void run();
 
   private:
     t_Drive();
   };
 }
-
-#if DRIVE_TYPE == TANK
-void Tank();
-#endif
-
-#if DRIVE_TYPE == SS_ARCADE
-void SS_Arcade();
-#endif
-
-#if DRIVE_TYPE == TS_Arcade
-void TS_Arcade();
-#endif
 
 #endif
