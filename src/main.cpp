@@ -22,8 +22,8 @@ void pre_drive() {
 
 // TODO:
 void autonomous() {
-  driveInches(12);
-  // other auton stuff
+  driveInches(12, BRAKE);
+  swingTurn(90, BRAKE);
 }
 
 void usercontrol() {

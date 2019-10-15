@@ -27,12 +27,14 @@ void Threads::t_Lift::run() {
   m_once = false;
   while (true) {
     if(Controller.ButtonL1.pressing()) {
-      Lift.spin(FWD, LIFT_SPEED, PCT);
-      m_once = false;
+      Lift.setStopping(MOTOR_STOPPING_DRIVE);
+      Lift.spin(BWD, LIFT_SPEED, vPCT);
     } else if(Controller.ButtonL2.pressing()) {
-      Lift.spin(BWD, MAX_SPEED / 10, PCT);
-      m_once = false;
+      Lift.setStopping(MOTOR_STOPPING_DRIVE);
+      Lift.spin(FWD, LIFT_SPEED / 10, vPCT);
     } else {
+      //Lift.stop(HOLD);
+      /*
       if (!m_once) {
         m_enc_LIFT_AVG = (LIFT_1.rotation(DEG) + LIFT_2.rotation(DEG)) / 2;
         m_once = true;
@@ -43,7 +45,7 @@ void Threads::t_Lift::run() {
         Lift.spin(BWD, LIFT_SPEED / 50, PCT);
       } else {
         Lift.stop();
-      }
+      }*/
     }
     vex::this_thread::sleep_for(10);
   }
@@ -52,11 +54,13 @@ void Threads::t_Lift::run() {
 void Threads::t_Intake::run() {
   while (true) {
     if(Controller.ButtonR1.pressing()) {
-      Intake.spin(FWD, INTAKE_SPEED, PCT);
+      Intake.setStopping(COAST);
+      Intake.spin(FWD, INTAKE_SPEED, vPCT);
     } else if(Controller.ButtonR2.pressing()) {
-      Intake.spin(BWD, INTAKE_SPEED, PCT);
+      Intake.setStopping(COAST);
+      Intake.spin(BWD, INTAKE_SPEED, vPCT);
     } else {
-      Intake.stop();
+      Intake.stop(HOLD);
     }
     vex::this_thread::sleep_for(10);
   }
@@ -65,22 +69,22 @@ void Threads::t_Intake::run() {
 void Threads::t_Drive::Tank() {
   RF.spin(FWD, Controller.RIGHT_JOY_VERT(), vPCT);
   LF.spin(FWD, Controller.LEFT_JOY_VERT(), vPCT);
-  RB.spin(FWD, Controller.RIGHT_JOY_VERT(), vPCT);
-  LB.spin(FWD, Controller.LEFT_JOY_VERT(), vPCT);
+  //RB.spin(FWD, Controller.RIGHT_JOY_VERT(), vPCT);
+  //LB.spin(FWD, Controller.LEFT_JOY_VERT(), vPCT);
 }
 
 void Threads::t_Drive::SS_Arcade() {
   LF.spin(FWD, (Controller.LEFT_JOY_VERT() + Controller.LEFT_JOY_HORIZ()), vPCT); 
   RF.spin(FWD, (Controller.LEFT_JOY_VERT() - Controller.LEFT_JOY_HORIZ()), vPCT);
-  LB.spin(FWD, (Controller.LEFT_JOY_VERT() + Controller.LEFT_JOY_HORIZ()), vPCT); 
-  RB.spin(FWD, (Controller.LEFT_JOY_VERT() - Controller.LEFT_JOY_HORIZ()), vPCT);
+  //LB.spin(FWD, (Controller.LEFT_JOY_VERT() + Controller.LEFT_JOY_HORIZ()), vPCT); 
+  //RB.spin(FWD, (Controller.LEFT_JOY_VERT() - Controller.LEFT_JOY_HORIZ()), vPCT);
 }
 
 void Threads::t_Drive::TS_Arcade() {
   LF.spin(FWD, (Controller.LEFT_JOY_VERT() + Controller.RIGHT_JOY_HORIZ()), vPCT); 
   RF.spin(FWD, (Controller.LEFT_JOY_VERT() - Controller.RIGHT_JOY_HORIZ()), vPCT);
-  LB.spin(FWD, (Controller.LEFT_JOY_VERT() + Controller.RIGHT_JOY_HORIZ()), vPCT); 
-  RB.spin(FWD, (Controller.LEFT_JOY_VERT() - Controller.RIGHT_JOY_HORIZ()), vPCT);
+  //LB.spin(FWD, (Controller.LEFT_JOY_VERT() + Controller.RIGHT_JOY_HORIZ()), vPCT); 
+  //RB.spin(FWD, (Controller.LEFT_JOY_VERT() - Controller.RIGHT_JOY_HORIZ()), vPCT);
 }
 
 void Threads::t_Drive::run() {
