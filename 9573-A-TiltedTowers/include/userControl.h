@@ -19,11 +19,6 @@ public:
 
   static void entry();
 
-public:
-  bool m_once;
-
-  double m_enc_LIFT_AVG;
-
 private:
   void run();
 

@@ -1,6 +1,7 @@
-#include "robotConfig.h"
 #include "auton.h"
+#include "robotConfig.h"
 #include "userControl.h"
+
 
 void pre_auton() {
   driveTrain.setMaxTorque(100, PCT);
@@ -23,12 +24,12 @@ void pre_drive() {
 // TODO:
 void autonomous() {
   driveInches(12, BRAKE);
-  swingTurn(90, BRAKE);
+  fSwingTurn(90, BRAKE);
 }
 
 void usercontrol() {
   pre_drive();
-  
+
   Threads::t_Drive::tc_Drive();
   Threads::t_Intake::tc_Intake();
   Threads::t_Lift::tc_Lift();
@@ -39,12 +40,12 @@ void usercontrol() {
 }
 
 int main() {
-    Competition.autonomous(autonomous);
-    Competition.drivercontrol(usercontrol);
-    
-    pre_auton();
-                      
-    while(true) {
-      vex::task::sleep(100);
-    }
+  Competition.autonomous(autonomous);
+  Competition.drivercontrol(usercontrol);
+
+  pre_auton();
+
+  while (true) {
+    vex::task::sleep(100);
+  }
 }
