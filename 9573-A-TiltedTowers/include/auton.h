@@ -2,6 +2,7 @@
 #define AUTON
 
 #include "robotConfig.h"
+#include "pid.h"
 
 void driveInches(double inches,
                  vex::brakeType brakeType = MOTOR_STOPPING_AUTON);

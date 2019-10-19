@@ -42,6 +42,7 @@
 #define LIFT_SPEED 100
 #define INTAKE_SPEED 100
 #define MAX_SPEED 100
+#define MAX_SPEED_AUTON 100
 #define HALF_SPEED 50
 #define OFF 0
 
