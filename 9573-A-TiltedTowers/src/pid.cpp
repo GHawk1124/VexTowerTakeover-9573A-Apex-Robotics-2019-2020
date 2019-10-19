@@ -2,9 +2,16 @@
 #include <cmath>
 
 pid_controller::pid_controller(float _pidTarget,
-                               vex::motor_group *_motorGroup) {}
+                               vex::motor_group *_motorGroup) {
+  _pidTarget = pid_controller::m_pidTarget;
+  _motorGroup = pid_controller::m_motorGroup;
+}
 
-int pid_controller::pid_run(float pidTarget, vex::motor_group *motorGroup) {
+void pid_controller::entry(pid_controller *pid_c) {
+  pid_c->pid_run(pid_c->m_pidTarget, pid_c->m_motorGroup);
+}
+
+void pid_controller::pid_run(float pidTarget, vex::motor_group *motorGroup) {
   pidLastError = 0;
   pidIntegral = 0;
   motorGroup->resetRotation();
@@ -36,5 +43,4 @@ int pid_controller::pid_run(float pidTarget, vex::motor_group *motorGroup) {
   pidLastError = 0;
   pidIntegral = 0;
   pidDerivative = 0;
-  return 0;
 }

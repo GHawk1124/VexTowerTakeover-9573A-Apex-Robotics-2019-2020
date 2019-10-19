@@ -2,7 +2,6 @@
 #include "robotConfig.h"
 #include "userControl.h"
 
-
 void pre_auton() {
   driveTrain.setMaxTorque(100, PCT);
   driveTrain.setStopping(MOTOR_STOPPING_AUTON);
@@ -23,8 +22,8 @@ void pre_drive() {
 
 // TODO:
 void autonomous() {
-  /*driveInches(12, BRAKE);
-  vex::this_thread::sleep_for(1000);
+  driveInches(12, COAST);
+  /*vex::this_thread::sleep_for(1000);
   pointTurn(90);
   vex::this_thread::sleep_for(1000);
   fSwingTurn(90, BRAKE);*/

@@ -57,7 +57,8 @@ extern vex::motor LF;
 // extern vex::motor LB;
 extern vex::motor_group driveTrain;
 
-extern vex::motor Lift;
+extern vex::motor LIFT;
+extern vex::motor_group Lift;
 
 extern vex::motor INTAKE_1;
 extern vex::motor INTAKE_2;

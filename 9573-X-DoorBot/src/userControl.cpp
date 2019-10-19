@@ -73,15 +73,12 @@ void Threads::t_Drive::TS_Arcade() {
 }
 
 void Threads::t_Drive::run() {
-#if DRIVE_TYPE == TANK
+if (DRIVE_TYPE == 1)
   Threads::t_Drive::Tank();
-#endif
 
-#if DRIVE_TYPE == SS_ARCADE
+if (DRIVE_TYPE == 3)
   Threads::t_Drive::SS_Arcade();
-#endif
 
-#if DRIVE_TYPE == TS_ARCADE
+if (DRIVE_TYPE == 2)
   Threads::t_Drive::TS_Arcade();
-#endif
 }

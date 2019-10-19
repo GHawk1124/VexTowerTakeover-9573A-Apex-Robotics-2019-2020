@@ -14,7 +14,6 @@ public:
       mSelf = new t_Lift();
     }
     return *mSelf;
-    ;
   }
 
   static void entry();
@@ -57,21 +56,16 @@ public:
 
   static void entry();
 
-private:
-#if DRIVE_TYPE == TANK
+public:
   void Tank();
-#endif
 
-#if DRIVE_TYPE == SS_ARCADE
   void SS_Arcade();
-#endif
 
-#if DRIVE_TYPE == TS_Arcade
   void TS_Arcade();
-#endif
 
   void run();
 
+private:
   t_Drive();
 };
 

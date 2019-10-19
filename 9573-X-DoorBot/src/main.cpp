@@ -18,6 +18,7 @@ void pre_drive() {
   Lift.setStopping(MOTOR_STOPPING_DRIVE);
   Claw.setMaxTorque(100, PCT);
   Claw.setStopping(MOTOR_STOPPING_DRIVE);
+  //driveInches(12, COAST);
 }
 
 // @TODO:

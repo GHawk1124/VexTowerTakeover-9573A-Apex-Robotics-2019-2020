@@ -21,12 +21,12 @@ void Threads::t_Lift::run() {
   while (true) {
     if (Controller.ButtonL1.pressing()) {
       Lift.setStopping(MOTOR_STOPPING_DRIVE);
-      Lift.spin(BWD, LIFT_SPEED, vPCT);
+      Lift.spin(FWD, HALF_SPEED, vPCT);
     } else if (Controller.ButtonL2.pressing()) {
       Lift.setStopping(MOTOR_STOPPING_DRIVE);
-      Lift.spin(FWD, LIFT_SPEED / 10, vPCT);
+      Lift.spin(BWD, HALF_SPEED / 10, vPCT);
     } else {
-      Lift.stop(HOLD);
+      Lift.stop();
     }
     vex::this_thread::sleep_for(10);
   }
@@ -73,15 +73,15 @@ void Threads::t_Drive::TS_Arcade() {
 }
 
 void Threads::t_Drive::run() {
-#if DRIVE_TYPE == TANK
+#if DRIVE_TYPE == 1
   Threads::t_Drive::Tank();
 #endif
 
-#if DRIVE_TYPE == SS_ARCADE
+#if DRIVE_TYPE == 2
   Threads::t_Drive::SS_Arcade();
 #endif
 
-#if DRIVE_TYPE == TS_ARCADE
+#if DRIVE_TYPE == 3
   Threads::t_Drive::TS_Arcade();
 #endif
 }
