@@ -40,8 +40,9 @@
 #define LEFT_JOY_HORIZ Axis4.position
 // Consts
 #define LIFT_SPEED 100
-#define INTAKE_SPEED 100
+#define CLAW_SPEED 100
 #define MAX_SPEED 100
+#define MAX_SPEED_AUTON 100
 #define HALF_SPEED 50
 #define OFF 0
 
@@ -60,9 +61,9 @@ extern vex::motor LIFT_1;
 extern vex::motor LIFT_2;
 extern vex::motor_group Lift;
 
-extern vex::motor INTAKE_1;
-extern vex::motor INTAKE_2;
-extern vex::motor_group Intake;
+extern vex::motor CLAW_1;
+extern vex::motor CLAW_2;
+extern vex::motor_group Claw;
 
 extern vex::controller Controller;
 extern vex::competition Competition;

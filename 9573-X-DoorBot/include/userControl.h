@@ -19,24 +19,19 @@ public:
 
   static void entry();
 
-public:
-  bool m_once;
-
-  double m_enc_LIFT_AVG;
-
 private:
   void run();
 
   t_Lift();
 };
 
-class t_Intake : public vex::thread {
+class t_Claw : public vex::thread {
 public:
-  static t_Intake *mSelf;
+  static t_Claw *mSelf;
 
-  static t_Intake &tc_Intake() {
+  static t_Claw &tc_Claw() {
     if (mSelf == nullptr) {
-      mSelf = new t_Intake();
+      mSelf = new t_Claw();
     }
     return *mSelf;
   }
@@ -46,7 +41,7 @@ public:
 private:
   void run();
 
-  t_Intake();
+  t_Claw();
 };
 
 class t_Drive : public vex::thread {

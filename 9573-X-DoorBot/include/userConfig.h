@@ -32,7 +32,7 @@
 //#define LB_P vex::PORT20
 #define LIFT_1_P vex::PORT2
 #define LIFT_2_P vex::PORT9
-#define INTAKE_1_P vex::PORT11
-#define INTAKE_2_P vex::PORT20
+#define CLAW_1_P vex::PORT11
+#define CLAW_2_P vex::PORT20
 
 #endif
