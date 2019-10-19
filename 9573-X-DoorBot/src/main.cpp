@@ -2,7 +2,6 @@
 #include "robotConfig.h"
 #include "userControl.h"
 
-
 void pre_auton() {
   driveTrain.setMaxTorque(100, PCT);
   driveTrain.setStopping(MOTOR_STOPPING_AUTON);

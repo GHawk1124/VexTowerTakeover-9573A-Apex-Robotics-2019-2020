@@ -1,3 +1,6 @@
+#ifndef PID
+#define PID
+
 #include "robotConfig.h"
 
 #define PID_SENSOR_SCALE 1
@@ -7,9 +10,9 @@
 
 class pid_controller {
 public:
-  //static pid_controller* mself;
+  // static pid_controller* mself;
 
-  //static void entry();
+  // static void entry();
 public:
   const float Kp = 1.0;
   const float Ki = 1.0;
@@ -27,3 +30,5 @@ public:
   pid_controller(float _pidTarget, vex::motor_group *_motorGroup);
   ~pid_controller();
 };
+
+#endif

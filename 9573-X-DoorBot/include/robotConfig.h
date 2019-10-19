@@ -53,17 +53,15 @@ extern vex::brain Brain;
 
 extern vex::motor RF;
 extern vex::motor LF;
-// extern vex::motor RB;
-// extern vex::motor LB;
+extern vex::motor RB;
+extern vex::motor LB;
 extern vex::motor_group driveTrain;
 
 extern vex::motor LIFT_1;
 extern vex::motor LIFT_2;
 extern vex::motor_group Lift;
 
-extern vex::motor CLAW_1;
-extern vex::motor CLAW_2;
-extern vex::motor_group Claw;
+extern vex::motor Claw;
 
 extern vex::controller Controller;
 extern vex::competition Competition;

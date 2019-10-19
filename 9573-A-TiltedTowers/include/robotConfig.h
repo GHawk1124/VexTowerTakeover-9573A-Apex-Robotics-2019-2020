@@ -40,7 +40,7 @@
 #define LEFT_JOY_HORIZ Axis4.position
 // Consts
 #define LIFT_SPEED 100
-#define INTAKE_SPEED 100
+#define INTAKE_SPEED 50
 #define MAX_SPEED 100
 #define MAX_SPEED_AUTON 100
 #define HALF_SPEED 50
@@ -57,9 +57,7 @@ extern vex::motor LF;
 // extern vex::motor LB;
 extern vex::motor_group driveTrain;
 
-extern vex::motor LIFT_1;
-extern vex::motor LIFT_2;
-extern vex::motor_group Lift;
+extern vex::motor Lift;
 
 extern vex::motor INTAKE_1;
 extern vex::motor INTAKE_2;

@@ -31,6 +31,7 @@ int pid_controller::pid_run(float pidTarget, vex::motor_group *motorGroup) {
 
     motorGroup->spin(FWD, pidDrive, vPCT);
   }
+  motorGroup->stop();
   pidError = 0;
   pidLastError = 0;
   pidIntegral = 0;
