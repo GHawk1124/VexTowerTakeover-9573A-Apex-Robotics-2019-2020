@@ -9,8 +9,6 @@ class pid_controller {
 public:
   //static pid_controller* mself;
 
-  static void entry(pid_controller* pid_c);
-
 public:
   const float Kp = 1.0;
   const float Ki = 0;
@@ -21,10 +19,11 @@ public:
   float pidLastError;
   float pidIntegral;
   float pidDerivative;
-  float pidDrive;
+  float pidDrive;  
 
   float m_pidTarget;
   vex::motor_group *m_motorGroup;
+  void entry();
 
   pid_controller(float _pidTarget, vex::motor_group *_motorGroup);
 private:

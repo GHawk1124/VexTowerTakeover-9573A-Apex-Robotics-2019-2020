@@ -3,12 +3,12 @@
 
 pid_controller::pid_controller(float _pidTarget,
                                vex::motor_group *_motorGroup) {
-  _pidTarget = pid_controller::m_pidTarget;
-  _motorGroup = pid_controller::m_motorGroup;
+  this->m_pidTarget = _pidTarget;
+  this->m_motorGroup = _motorGroup;
 }
 
-void pid_controller::entry(pid_controller *pid_c) {
-  pid_c->pid_run(pid_c->m_pidTarget, pid_c->m_motorGroup);
+void pid_controller::entry() {
+  this->pid_run(this->m_pidTarget, this->m_motorGroup);
 }
 
 void pid_controller::pid_run(float pidTarget, vex::motor_group *motorGroup) {
