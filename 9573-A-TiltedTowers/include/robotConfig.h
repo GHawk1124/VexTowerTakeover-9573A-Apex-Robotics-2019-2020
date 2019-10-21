@@ -40,7 +40,7 @@
 #define LEFT_JOY_HORIZ Axis4.position
 // Consts
 #define LIFT_SPEED 100
-#define INTAKE_SPEED 50
+#define INTAKE_SPEED 75
 #define MAX_SPEED 100
 #define MAX_SPEED_AUTON 100
 #define HALF_SPEED 50

@@ -21,10 +21,10 @@ void Threads::t_Lift::run() {
   while (true) {
     if (Controller.ButtonL1.pressing()) {
       Lift.setStopping(MOTOR_STOPPING_DRIVE);
-      Lift.spin(FWD, HALF_SPEED, vPCT);
+      Lift.spin(FWD, 75, vPCT);
     } else if (Controller.ButtonL2.pressing()) {
       Lift.setStopping(MOTOR_STOPPING_DRIVE);
-      Lift.spin(BWD, HALF_SPEED / 10, vPCT);
+      Lift.spin(BWD, HALF_SPEED, vPCT);
     } else {
       Lift.stop();
     }

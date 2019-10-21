@@ -6,10 +6,7 @@ void driveInches(double inches, vex::brakeType brakeType) {
   double rots = inches / (WHEEL_CIRCUM);
   pid_controller pid = pid_controller(rots, &driveTrain);
   driveTrain.setStopping(brakeType);
-  pid_controller::entry(&pid);
-  while (pid.pidDrive != 0) {
-    driveTrain.spin(FWD, pid.pidDrive, vPCT);
-  }
+  pid.entry();
 }
 
 void pointTurn(double degrees, vex::brakeType brakeType) {
