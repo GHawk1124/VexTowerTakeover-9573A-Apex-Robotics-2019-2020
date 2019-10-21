@@ -38,8 +38,11 @@
 #define RIGHT_JOY_HORIZ Axis1.position
 #define LEFT_JOY_VERT Axis3.position
 #define LEFT_JOY_HORIZ Axis4.position
+#define BUTTON_L1 ButtonL1.pressing
+#define BUTTON_R1 ButtonR1.pressing
+#define BUTTON_R2 ButtonR2.pressing
 // Consts
-#define LIFT_SPEED 100
+#define LIFT_SPEED 75
 #define CLAW_SPEED 100
 #define MAX_SPEED 100
 #define MAX_SPEED_AUTON 100
@@ -55,10 +58,12 @@ extern vex::motor RF;
 extern vex::motor LF;
 extern vex::motor RB;
 extern vex::motor LB;
+extern vex::motor_group driveTrainLeft;
+extern vex::motor_group driveTrainRight;
 extern vex::motor_group driveTrain;
 
-extern vex::motor LIFT_1;
-extern vex::motor LIFT_2;
+extern vex::motor LEFT_LIFT;
+extern vex::motor RIGHT_LIFT;
 extern vex::motor_group Lift;
 
 extern vex::motor Claw;
