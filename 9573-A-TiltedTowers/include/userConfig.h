@@ -9,6 +9,14 @@
 // Stick Controls Forward/Backward Right Side of Bot
 #define DRIVE_TYPE 3 // 2 SS_ARCADE : 3 TS_Arcade : 1 TANK
 
+/* Consts */
+#define LIFT_SPEED 100
+#define INTAKE_SPEED 75
+#define MAX_SPEED 100
+#define MAX_SPEED_AUTON 100
+#define HALF_SPEED 50
+#define OFF 0
+
 // Sets the Stopping Type for Auton and Drive
 // Hold: Motor holds at end position, Brake: Hardstop forces motor at end
 // position, Coast: Motor stops due to friction

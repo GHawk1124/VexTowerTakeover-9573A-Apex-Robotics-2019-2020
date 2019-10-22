@@ -8,7 +8,7 @@ pid_controller::pid_controller(float _pidTarget,
 }
 
 void pid_controller::entry() {
-  this->pid_run(this->m_pidTarget, this->m_motorGroup);
+  pid_run(m_pidTarget, m_motorGroup);
 }
 
 void pid_controller::pid_run(float pidTarget, vex::motor_group *motorGroup) {

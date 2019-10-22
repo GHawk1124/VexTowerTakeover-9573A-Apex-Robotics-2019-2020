@@ -49,26 +49,29 @@ void Threads::t_Intake::run() {
 
 void Threads::t_Drive::Tank() {
   while (true) {
-    RF.spin(FWD, Controller.RIGHT_JOY_VERT(), vPCT);
-    LF.spin(FWD, Controller.LEFT_JOY_VERT(), vPCT);
+    rightDT.spin(FWD, Controller.RIGHT_JOY_VERT(), vPCT);
+    leftDT.spin(FWD, Controller.LEFT_JOY_VERT(), vPCT);
+    vex::this_thread::sleep_for(10);
   }
 }
 
 void Threads::t_Drive::SS_Arcade() {
   while (true) {
-    LF.spin(FWD, (Controller.LEFT_JOY_VERT() + Controller.LEFT_JOY_HORIZ()),
+    leftDT.spin(FWD, (Controller.LEFT_JOY_VERT() + Controller.LEFT_JOY_HORIZ()),
             vPCT);
-    RF.spin(FWD, (Controller.LEFT_JOY_VERT() - Controller.LEFT_JOY_HORIZ()),
+    rightDT.spin(FWD, (Controller.LEFT_JOY_VERT() - Controller.LEFT_JOY_HORIZ()),
             vPCT);
+    vex::this_thread::sleep_for(10);
   }
 }
 
 void Threads::t_Drive::TS_Arcade() {
   while (true) {
-    LF.spin(FWD, (Controller.LEFT_JOY_VERT() + Controller.RIGHT_JOY_HORIZ()),
+    leftDT.spin(FWD, (Controller.LEFT_JOY_VERT() + Controller.RIGHT_JOY_HORIZ()),
             vPCT);
-    RF.spin(FWD, (Controller.LEFT_JOY_VERT() - Controller.RIGHT_JOY_HORIZ()),
+    rightDT.spin(FWD, (Controller.LEFT_JOY_VERT() - Controller.RIGHT_JOY_HORIZ()),
             vPCT);
+    vex::this_thread::sleep_for(10);
   }
 }
 

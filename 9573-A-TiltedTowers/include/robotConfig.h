@@ -38,13 +38,6 @@
 #define RIGHT_JOY_HORIZ Axis1.position
 #define LEFT_JOY_VERT Axis3.position
 #define LEFT_JOY_HORIZ Axis4.position
-// Consts
-#define LIFT_SPEED 100
-#define INTAKE_SPEED 75
-#define MAX_SPEED 100
-#define MAX_SPEED_AUTON 100
-#define HALF_SPEED 50
-#define OFF 0
 
 #endif
 
@@ -53,8 +46,8 @@ extern vex::brain Brain;
 
 extern vex::motor RF;
 extern vex::motor LF;
-// extern vex::motor RB;
-// extern vex::motor LB;
+extern vex::motor_group rightDT;
+extern vex::motor_group leftDT;
 extern vex::motor_group driveTrain;
 
 extern vex::motor LIFT;
