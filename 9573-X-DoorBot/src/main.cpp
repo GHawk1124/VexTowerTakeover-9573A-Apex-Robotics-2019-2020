@@ -4,21 +4,21 @@
 #include "userControl.h"
 
 void pre_auton() {
-  driveTrain.setMaxTorque(100, PCT);
-  driveTrain.setStopping(MOTOR_STOPPING_AUTON);
+  DriveTrain.setMaxTorque(100, PCT);
+  DriveTrain.setStopping(MOTOR_STOPPING_AUTON);
   Lift.setMaxTorque(100, PCT);
   Lift.setStopping(MOTOR_STOPPING_AUTON);
   Claw.setMaxTorque(100, PCT);
-  Claw.setStopping(MOTOR_STOPPING_AUTON);
+  Claw.setStopping(COAST);
 }
 
 void pre_drive() {
-  driveTrain.setMaxTorque(100, PCT);
-  driveTrain.setStopping(MOTOR_STOPPING_DRIVE);
+  DriveTrain.setMaxTorque(100, PCT);
+  DriveTrain.setStopping(MOTOR_STOPPING_DRIVE);
   Lift.setMaxTorque(100, PCT);
   Lift.setStopping(MOTOR_STOPPING_DRIVE);
   Claw.setMaxTorque(100, PCT);
-  Claw.setStopping(MOTOR_STOPPING_DRIVE);
+  Claw.setStopping(COAST);
 }
 
 void autonomous() {
@@ -36,7 +36,12 @@ void usercontrol() {
   Threads::t_Lift::tc_Lift();
 
   while (true) {
+    Brain.Screen.setCursor(1, 1);
+    Brain.Screen.print(Brain.Battery.voltage());
+    Brain.Screen.newLine();
+    Brain.Screen.print(Brain.Battery.current());
     if (Controller.RESET()) {
+      Lift.stop(COAST);
       Threads::t_Drive::mSelf = nullptr;
       Threads::t_Claw::mSelf = nullptr;
       Threads::t_Lift::mSelf = nullptr;

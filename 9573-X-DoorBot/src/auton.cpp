@@ -4,15 +4,15 @@ const float WHEEL_CIRCUM = WHEEL_DIAMETER * PI;
 
 void driveInches(double inches, vex::brakeType brakeType) {
   double rots = inches / (WHEEL_CIRCUM);
-  pid_controller pid = pid_controller(rots, &driveTrain);
-  driveTrain.setStopping(brakeType);
+  pid_controller pid = pid_controller(rots, &DriveTrain);
+  DriveTrain.setStopping(brakeType);
   pid.entry();
-  //driveTrain.rotateTo(rots, ROT, 100, vPCT);
+  //DriveTrain.rotateTo(rots, ROT, 100, vPCT);
 }
 
 void pointTurn(double degrees, vex::brakeType brakeType) {
   double rots = (BOT_WIDTH * PI * (degrees / 360) / WHEEL_CIRCUM);
-  driveTrain.setStopping(brakeType);
+  DriveTrain.setStopping(brakeType);
   if (degrees > 0) {
     RF.rotateFor(rots, ROT, -MAX_SPEED, vPCT);
     LF.rotateTo(rots, ROT, MAX_SPEED, vPCT);
