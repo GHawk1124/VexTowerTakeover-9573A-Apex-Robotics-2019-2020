@@ -1,19 +1,36 @@
 #include "pid.h"
 #include <cmath>
 
-pid_controller::pid_controller(float _pidTarget,
-                               vex::motor_group *_motorGroup) {
-  m_pidTarget = _pidTarget;
-  m_motorGroup = _motorGroup;
+pid_controller *pid_controller::mself = nullptr;
+
+float pid_controller::pidTarget = 0.0;
+vex::motor_group *pid_controller::motorGroup = nullptr;
+
+float pid_controller::Kp = 0;
+float pid_controller::Ki = 0;
+float pid_controller::Kd = 0;
+
+pid_controller::pid_controller(float _pidTarget, vex::motor_group *_motorGroup,
+                               float _Kp, float _Ki, float _Kd) {
+  pid_controller::Kp = _Kp;
+  pid_controller::Ki = _Ki;
+  pid_controller::Kd = _Kd;
 }
 
-void init() {
-  
+void pid_controller::init() {
+  pid_controller::mself->pid_run(pid_controller::pidTarget,
+                                 pid_controller::motorGroup, 1);
 }
 
-void pid_controller::entry() { pid_run(m_pidTarget, m_motorGroup, 1); }
-void pid_controller::entry2() { pid_run(m_pidTarget, m_motorGroup, 2); }
-void pid_controller::entry3() { pid_run(m_pidTarget, m_motorGroup, 3); }
+void pid_controller::init2() {
+  pid_controller::mself->pid_run(pid_controller::pidTarget,
+                                 pid_controller::motorGroup, 2);
+}
+
+void pid_controller::init3() {
+  pid_controller::mself->pid_run(pid_controller::pidTarget,
+                                 pid_controller::motorGroup, 3);
+}
 
 void pid_controller::pid_run(float pidTarget, vex::motor_group *motorGroup,
                              uint8_t _pidDrive) {
@@ -43,8 +60,9 @@ void pid_controller::pid_run(float pidTarget, vex::motor_group *motorGroup,
     pidDerivative =
         pidErrors[0] - (pidErrors[1] + pidErrors[2] + pidErrors[3]) / 3;
 
-    float tpidDrive =
-        (Kp * pidErrors[3]) + (Ki * pidIntegral) + (Kd * pidDerivative);
+    float tpidDrive = (pid_controller::Kp * pidErrors[3]) +
+                      (pid_controller::Ki * pidIntegral) +
+                      (pid_controller::Kd * pidDerivative);
 
     if (tpidDrive > PID_DRIVE_MAX) {
       tpidDrive = PID_DRIVE_MAX;
@@ -66,9 +84,7 @@ void pid_controller::pid_run(float pidTarget, vex::motor_group *motorGroup,
       motorGroup->spin(FWD, pidDriveAvg, vPCT);
     }
   }
-  if (_pidDrive == 1) {
-    motorGroup->stop();
-  }
+  motorGroup->stop();
   pidErrors[0] = 0;
   pidLastError = 0;
   pidIntegral = 0;
