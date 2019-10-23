@@ -8,6 +8,9 @@
 
 #include "userConfig.h"
 
+/*
+ * @brief Standard Definitions to make code cleaner
+ */
 #ifndef RM_STANDARD_V5_DEFINITIONS
 #define RM_STANDARD_V5_DEFINITIONS
 
@@ -41,7 +44,10 @@
 
 #endif
 
+#define RESET ButtonY.pressing
+
 // Extern so cpp module can define
+// Defines all of the Global Objects defining the Robot
 extern vex::brain Brain;
 
 extern vex::motor RF;
