@@ -7,6 +7,7 @@ void driveInches(double inches, vex::brakeType brakeType) {
   pid_controller pid = pid_controller(rots, &driveTrain);
   driveTrain.setStopping(brakeType);
   pid.entry();
+  //vex::thread pid1 = vex::thread(&pid.entry);
 }
 
 void pointTurn(double degrees, vex::brakeType brakeType) {
