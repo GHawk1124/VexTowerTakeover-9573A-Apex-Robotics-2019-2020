@@ -1,3 +1,4 @@
+
 #include "auton.h"
 #include "robotConfig.h"
 #include "userControl.h"
@@ -18,16 +19,13 @@ void pre_drive() {
   Lift.setStopping(MOTOR_STOPPING_DRIVE);
   Claw.setMaxTorque(100, PCT);
   Claw.setStopping(MOTOR_STOPPING_DRIVE);
-  //driveInches(12, COAST);
 }
 
-// @TODO:
 void autonomous() {
-  /*driveInches(12, BRAKE);
+  driveInches(12, COAST);
   vex::this_thread::sleep_for(1000);
   pointTurn(90);
   vex::this_thread::sleep_for(1000);
-  fSwingTurn(90, BRAKE);*/
 }
 
 void usercontrol() {

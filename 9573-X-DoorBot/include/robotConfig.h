@@ -38,9 +38,9 @@
 #define RIGHT_JOY_HORIZ Axis1.position
 #define LEFT_JOY_VERT Axis3.position
 #define LEFT_JOY_HORIZ Axis4.position
-#define BUTTON_L1 ButtonL1.pressing
-#define BUTTON_R1 ButtonR1.pressing
-#define BUTTON_R2 ButtonR2.pressing
+#define RAISE_LIFT ButtonR1.pressing
+#define LOWER_LIFT ButtonR2.pressing
+#define OPEN_CLAW ButtonL1.pressing
 // Consts
 #define LIFT_SPEED 75
 #define CLAW_SPEED 100

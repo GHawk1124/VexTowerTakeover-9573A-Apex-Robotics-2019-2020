@@ -14,7 +14,7 @@ vex::motor LEFT_LIFT = vex::motor(LEFT_LIFT_P, TORQUE_RATIO, false);
 vex::motor RIGHT_LIFT = vex::motor(RIGHT_LIFT_P, TORQUE_RATIO, true);
 vex::motor_group Lift = vex::motor_group(LEFT_LIFT, RIGHT_LIFT);
 
-vex::motor Claw = vex::motor(CLAW_P, MID_RATIO, true);
+vex::motor Claw = vex::motor(CLAW_P, MID_RATIO, false);
 
 vex::controller Controller;
 vex::competition Competition;
