@@ -80,7 +80,7 @@ void pid_controller::pid_run(float pidTarget, vex::motor_group *motorGroup,
 
     float pidDriveAvg = (pidDrive + pidDrive2 + pidDrive3) / 3;
 
-    if (_pidDrive == 1) {
+    if (_pidDrive == 3) {
       motorGroup->spin(FWD, pidDriveAvg, vPCT);
     }
   }

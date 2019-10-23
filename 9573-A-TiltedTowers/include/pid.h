@@ -33,9 +33,6 @@ public:
 
   float pidErrors[4];
 
-  float m_pidTarget;
-  vex::motor_group *m_motorGroup;
-
   float pidDrive;
   float pidDrive2;
   float pidDrive3;
