@@ -46,6 +46,8 @@ extern vex::brain Brain;
 
 extern vex::motor RF;
 extern vex::motor LF;
+extern vex::motor RB;
+extern vex::motor LB;
 extern vex::motor_group rightDT;
 extern vex::motor_group leftDT;
 extern vex::motor_group driveTrain;
