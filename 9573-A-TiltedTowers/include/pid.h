@@ -7,24 +7,42 @@
 
 class pid_controller {
 public:
-  const float Kp = 1.0;
-  const float Ki = 0;
-  const float Kd = 0;
+  static pid_controller *mself;
 
+  static float Kp;
+  static float Ki;
+  static float Kd;
+
+  static void init();
+
+  static void init2();
+
+  static void init3();
+
+  static float pidTarget;
+
+  static vex::motor_group *motorGroup;
+
+public:
   float pidSensorCurrentValue;
-  float pidError;
   float pidLastError;
+  float pid2LastError;
+  float pid3LastError;
   float pidIntegral;
   float pidDerivative;
-  float pidDrive;
+
+  float pidErrors[4];
 
   float m_pidTarget;
   vex::motor_group *m_motorGroup;
 
-  void entry();
+  float pidDrive;
+  float pidDrive2;
+  float pidDrive3;
 
-  pid_controller(float _pidTarget, vex::motor_group *_motorGroup);
+  pid_controller(float _pidTarget, vex::motor_group *_motorGroup, float _Kp,
+                 float _Ki, float _Kd);
 
 private:
-  void pid_run(float pidTarget, vex::motor_group *motor);
+  void pid_run(float pidTarget, vex::motor_group *motor, uint8_t _pidDrive);
 };
