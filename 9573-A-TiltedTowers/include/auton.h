@@ -4,13 +4,17 @@
 #include "pid.h"
 #include "robotConfig.h"
 
+/*
+ * @brief Instantiates a pid_controller with set parameters and destroys it when
+ *  finished.
+ */
 void newPID(double _rots, float __Kp, float __Ki, float __Kd);
 
 /*
  * @brief Drives a specific number of inches that stops with a specific stopping
  *  type.
- * @param inches Sets the number of inches for the DriveTrain to move
- * @param brakeType Sets the brakeType for when the function completes
+ * @param inches Sets the number of inches for the DriveTrain to move.
+ * @param brakeType Sets the brakeType for when the function completes.
  */
 void driveInches(double inches,
                  vex::brakeType brakeType = MOTOR_STOPPING_AUTON);
@@ -18,16 +22,16 @@ void driveInches(double inches,
 /*
  * @brief Turns the bot a specific number of degrees while staying in place.
  *  (Rotates around Center of Robot)
- * @param degrees Sets the number of degrees for the DriveTrain to turn
- * @param brakeType Sets the brakeType for when the function completes
+ * @param degrees Sets the number of degrees for the DriveTrain to turn.
+ * @param brakeType Sets the brakeType for when the function completes.
  */
 void pointTurn(double degrees, vex::brakeType brakeType = MOTOR_STOPPING_AUTON);
 
 /*
  * @brief Turns the bot a specific number of degrees while staying in place.
  *  (Rotates around top left or top right wheel)
- * @param degrees Sets the number of degrees for the DriveTrain to rotate
- * @param brakeType Sets the brakeType for when the function completes
+ * @param degrees Sets the number of degrees for the DriveTrain to rotate.
+ * @param brakeType Sets the brakeType for when the function completes.
  */
 void fSwingTurn(double degrees,
                 vex::brakeType brakeType = MOTOR_STOPPING_AUTON);
@@ -35,8 +39,8 @@ void fSwingTurn(double degrees,
 /*
  * @brief Turns the bot a specific number of degrees while staying in place.
  *  (Rotates around bottom left or bottom right wheel)
- * @param degrees Sets the number of degrees for the DriveTrain to rotate
- * @param brakeType Sets the brakeType for when the function completes
+ * @param degrees Sets the number of degrees for the DriveTrain to rotate.
+ * @param brakeType Sets the brakeType for when the function completes.
  */
 void bSwingTurn(double degrees,
                 vex::brakeType brakeType = MOTOR_STOPPING_AUTON);

@@ -10,7 +10,7 @@
 #define PID_DRIVE_MIN 0
 
 /*
- * @brief Controller for a pid loop
+ * @brief Controller for a pid loop.
  */
 class pid_controller {
 public:

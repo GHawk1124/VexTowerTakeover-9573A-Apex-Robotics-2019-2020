@@ -8,9 +8,9 @@ namespace Threads {
 
 /*
  * @brief Creates a thread that can only be created if it doesn't already exist.
- *  All variables pertaining to the thread remain in the class
+ *  All variables pertaining to the thread remain in the class.
  * @inheritance Inherits from vex::thread to create the thread with a static
- *  function inside the class
+ *  function inside the class.
  */
 class t_Lift : public vex::thread {
 public:
@@ -57,9 +57,9 @@ private:
 
 /*
  * @brief Creates a thread that can only be created if it doesn't already exist.
- *  All variables pertaining to the thread remain in the class
+ *  All variables pertaining to the thread remain in the class.
  * @inheritance Inherits from vex::thread to create the thread with a static
- *  function inside the class
+ *  function inside the class.
  */
 class t_Intake : public vex::thread {
 public:
@@ -106,9 +106,9 @@ private:
 
 /*
  * @brief Creates a thread that can only be created if it doesn't already exist.
- *  All variables pertaining to the thread remain in the class
+ *  All variables pertaining to the thread remain in the class.
  * @inheritance Inherits from vex::thread to create the thread with a static
- *  function inside the class
+ *  function inside the class.
  */
 class t_Drive : public vex::thread {
 public:
@@ -156,7 +156,7 @@ private:
 
   /*
    * @brief runs the legitimate code for the thread called by the static entry
-   * function.
+   *  function.
    */
   void run();
 
