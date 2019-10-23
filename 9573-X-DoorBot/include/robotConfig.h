@@ -41,6 +41,7 @@
 #define RAISE_LIFT ButtonR1.pressing
 #define LOWER_LIFT ButtonR2.pressing
 #define OPEN_CLAW ButtonL1.pressing
+#define RESET ButtonY.pressing
 // Consts
 #define LIFT_SPEED 75
 #define CLAW_SPEED 100

@@ -24,14 +24,14 @@ void Threads::t_Lift::run() {
     ll = LEFT_LIFT.rotation(DEG);
     rl = RIGHT_LIFT.rotation(DEG);
     LEFT_LIFT.spin(BWD,
-                   LIFT_SPEED * Controller.RAISE_LIFT() -
-                       LIFT_SPEED / 3 * Controller.LOWER_LIFT() +
-                       (ll > rl ? 4 : 0),
+                   (LIFT_SPEED * Controller.RAISE_LIFT() -
+                    LIFT_SPEED / 3 * Controller.LOWER_LIFT()) +
+                       (rl > ll ? 4 : 0),
                    vPCT);
     RIGHT_LIFT.spin(BWD,
-                    LIFT_SPEED * Controller.RAISE_LIFT() -
-                        LIFT_SPEED / 3 * Controller.LOWER_LIFT() +
-                        (rl > ll ? 4 : 0),
+                    (LIFT_SPEED * Controller.RAISE_LIFT() -
+                     LIFT_SPEED / 3 * Controller.LOWER_LIFT()) +
+                        (ll > rl ? 4 : 0),
                     vPCT);
     vex::this_thread::sleep_for(10);
   }

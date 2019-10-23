@@ -36,6 +36,15 @@ void usercontrol() {
   Threads::t_Lift::tc_Lift();
 
   while (true) {
+    if (Controller.RESET()) {
+      Threads::t_Drive::mSelf = nullptr;
+      Threads::t_Claw::mSelf = nullptr;
+      Threads::t_Lift::mSelf = nullptr;
+      vex::this_thread::sleep_for(3000);
+      Threads::t_Drive::tc_Drive();
+      Threads::t_Claw::tc_Claw();
+      Threads::t_Lift::tc_Lift();
+    }
     vex::this_thread::sleep_for(10);
   }
 }
