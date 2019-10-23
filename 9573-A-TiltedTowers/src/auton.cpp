@@ -10,6 +10,7 @@ void newPID(double _rots, float __Kp, float __Ki, float __Kd) {
   vex::thread pid1 = vex::thread(&pid_controller::init);
   vex::thread pid2 = vex::thread(&pid_controller::init2);
   vex::thread pid3 = vex::thread(&pid_controller::init3);
+  pid3.join();
   delete pid_controller::mself;
 }
 

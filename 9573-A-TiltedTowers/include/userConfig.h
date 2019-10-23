@@ -33,10 +33,12 @@
 /* Ports */
 
 // Define for each Robot
-#define RF_P vex::PORT1
-#define LF_P vex::PORT10
-#define LIFT_P vex::PORT12
-#define INTAKE_1_P vex::PORT11
-#define INTAKE_2_P vex::PORT20
+#define RF_P vex::PORT20
+#define LF_P vex::PORT11
+#define RB_P vex::PORT19
+#define LB_P vex::PORT12
+#define LIFT_P vex::PORT9
+#define INTAKE_1_P vex::PORT10
+#define INTAKE_2_P vex::PORT1
 
 #endif
