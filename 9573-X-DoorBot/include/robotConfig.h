@@ -38,19 +38,9 @@
 #define RIGHT_JOY_HORIZ Axis1.position
 #define LEFT_JOY_VERT Axis3.position
 #define LEFT_JOY_HORIZ Axis4.position
-#define RAISE_LIFT ButtonR1.pressing
-#define LOWER_LIFT ButtonR2.pressing
-#define OPEN_CLAW ButtonL1.pressing
-#define RESET ButtonY.pressing
-// Consts
-#define LIFT_SPEED 75
-#define CLAW_SPEED 100
-#define MAX_SPEED 100
-#define MAX_SPEED_AUTON 100
-#define HALF_SPEED 50
-#define OFF 0
 
 #endif
+
 
 // Extern so cpp module can define
 extern vex::brain Brain;
@@ -59,9 +49,9 @@ extern vex::motor RF;
 extern vex::motor LF;
 extern vex::motor RB;
 extern vex::motor LB;
-extern vex::motor_group driveTrainLeft;
-extern vex::motor_group driveTrainRight;
-extern vex::motor_group driveTrain;
+extern vex::motor_group DriveTrainLeft;
+extern vex::motor_group DriveTrainRight;
+extern vex::motor_group DriveTrain;
 
 extern vex::motor LEFT_LIFT;
 extern vex::motor RIGHT_LIFT;

@@ -22,6 +22,10 @@ const int DRIVE_TYPE = 2; // 3 SS_ARCADE : 2 TS_Arcade : 1 TANK
 #define PI 3.14159265
 #define BOT_WIDTH 12.00                 // FLOAT
 
+#endif
+
+#ifndef CONSTANTS
+#define CONSTANTS
 /* Ports */
 
 // Define for each Robot
@@ -32,5 +36,19 @@ const int DRIVE_TYPE = 2; // 3 SS_ARCADE : 2 TS_Arcade : 1 TANK
 #define LEFT_LIFT_P vex::PORT1
 #define RIGHT_LIFT_P vex::PORT10
 #define CLAW_P vex::PORT12
+
+// Consts
+#define LIFT_SPEED 75
+#define CLAW_SPEED 100
+#define MAX_SPEED 100
+#define MAX_SPEED_AUTON 100
+#define HALF_SPEED 50
+#define OFF 0
+
+//Button Maps
+#define RAISE_LIFT ButtonR1.pressing
+#define LOWER_LIFT ButtonR2.pressing
+#define OPEN_CLAW ButtonL1.pressing
+#define RESET ButtonY.pressing
 
 #endif
