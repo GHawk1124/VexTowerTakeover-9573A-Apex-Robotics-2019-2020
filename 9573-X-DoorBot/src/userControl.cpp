@@ -19,8 +19,20 @@ void Threads::t_Drive::entry() { Threads::t_Drive::mSelf->run(); }
 
 void Threads::t_Lift::run() {
   Lift.setStopping(HOLD);
+  int ll, rl;
   while (true) {
-    Lift.spin(BWD, LIFT_SPEED * Controller.BUTTON_R2() - LIFT_SPEED / 3 * Controller.BUTTON_R1(), vPCT);
+    ll = LEFT_LIFT.rotation(DEG);
+    rl = RIGHT_LIFT.rotation(DEG);
+    LEFT_LIFT.spin(BWD,
+                   LIFT_SPEED * Controller.RAISE_LIFT() -
+                       LIFT_SPEED / 3 * Controller.LOWER_LIFT() +
+                       (ll > rl ? 4 : 0),
+                   vPCT);
+    RIGHT_LIFT.spin(BWD,
+                    LIFT_SPEED * Controller.RAISE_LIFT() -
+                        LIFT_SPEED / 3 * Controller.LOWER_LIFT() +
+                        (rl > ll ? 4 : 0),
+                    vPCT);
     vex::this_thread::sleep_for(10);
   }
 }
@@ -28,7 +40,7 @@ void Threads::t_Lift::run() {
 void Threads::t_Claw::run() {
   Claw.setStopping(COAST);
   while (true) {
-    Claw.spin(FWD, CLAW_SPEED * Controller.BUTTON_L1(), vPCT);
+    Claw.spin(FWD, CLAW_SPEED * Controller.OPEN_CLAW(), vPCT);
     vex::this_thread::sleep_for(10);
   }
 }
