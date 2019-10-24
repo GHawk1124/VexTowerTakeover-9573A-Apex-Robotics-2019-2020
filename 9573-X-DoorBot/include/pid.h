@@ -1,31 +1,76 @@
+#ifndef PID
+#define PID
+
 #include "robotConfig.h"
 
-#define PID_SENSOR_SCALE 1
+// Defines basic constants
+#define PID_SENSOR_SCALE 10
 #define PID_INTEGRAL_LIMIT 50
 #define PID_DRIVE_MAX MAX_SPEED_AUTON
 #define PID_DRIVE_MIN 0
 
+/*
+ * @brief Instantiates a pid_controller with set parameters and destroys it when
+ *  finished.
+ */
+void newPID(double _rots, vex::motor_group *_motorGroup, float _Kp, float _Ki, float _Kd);
+
+/*
+ * @brief Controller for a pid loop.
+ */
 class pid_controller {
 public:
-  //static pid_controller* mself;
+  /*
+   * @brief Used to init the PID.
+   */
+  void init();
 
-public:
-  const float Kp = 1.0;
-  const float Ki = 0;
-  const float Kd = 0;
+  /*
+   * @brief Sets each member function equal to the constructed values. Allows
+   *  the creation of different types of PID loops for each of the applications
+   *  of the bot.
+   */
+  pid_controller(float _pidTarget, vex::motor_group *_motorGroup, float _Kp,
+                 float _Ki, float _Kd);
 
-  float pidSensorCurrentValue;
+protected:
+  /*
+   * @brief Defines the PID Encoder Value Target.
+   */
+  const float pidTarget;
+
+  /*
+   * @brief Defines the Motor Group to act on.
+   */
+  vex::motor_group *motorGroup;
+
+  /*
+   * @brief Defines the PID tuning constants (defined in constructor)
+   */
+  const float Kp;
+  const float Ki;
+  const float Kd;
+
+  /*
+   * @brief Defines the four sensor values used for the P, I, and D (Proportion,
+   *  Integral, and Derivative)
+   */
   float pidError;
   float pidLastError;
   float pidIntegral;
   float pidDerivative;
-  float pidDrive;  
 
-  float m_pidTarget;
-  vex::motor_group *m_motorGroup;
-  void entry();
+  /*
+   * @brief Defines the motor speeds used for threads 1, 2 and 3 respectively
+   */
+  float pidDrive;
 
-  pid_controller(float _pidTarget, vex::motor_group *_motorGroup);
 private:
-  void pid_run(float pidTarget, vex::motor_group *motor);
+  /*
+   * @brief Starts the PID loop that eases into the correct encoder values
+   *  driving the correct number of rotations
+   */
+  void run(float pidTarget, vex::motor_group *motor);
 };
+
+#endif
