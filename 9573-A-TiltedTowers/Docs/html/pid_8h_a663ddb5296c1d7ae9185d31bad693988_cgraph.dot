@@ -1,0 +1,18 @@
+digraph "newPID"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="newPID",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="pid_controller::init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpid__controller.html#ada4a3599d3bf79412940110618b0de54",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="pid_controller::run",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpid__controller.html#a7b2528938ce06b9dd159a495a1fcf4fe",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Measure_1",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pid_8cpp.html#a4b66cb810f283ee2b94d264f2e7efbb3",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Measure_2",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pid_8cpp.html#afea439aebefb0ab23f0be5c88d88f979",tooltip=" "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Measure_3",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pid_8cpp.html#aacb6e7fad7c92dbd726fcdd549460daa",tooltip=" "];
+}

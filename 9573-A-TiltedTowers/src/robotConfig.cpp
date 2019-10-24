@@ -2,20 +2,20 @@
 
 vex::brain Brain;
 
-vex::motor RF = vex::motor(RF_P, MID_RATIO, true);
-vex::motor LF = vex::motor(LF_P, MID_RATIO, false);
-vex::motor RB = vex::motor(RB_P, MID_RATIO, true);
-vex::motor LB = vex::motor(LB_P, MID_RATIO, false);
-vex::motor_group rightDT = vex::motor_group(RF, RB);
-vex::motor_group leftDT = vex::motor_group(LF, LB);
-vex::motor_group driveTrain = vex::motor_group(RF, LF);
+vex::motor RF (RF_P, MID_RATIO, true);
+vex::motor LF (LF_P, MID_RATIO, false);
+vex::motor RB (RB_P, MID_RATIO, true);
+vex::motor LB (LB_P, MID_RATIO, false);
+vex::motor_group rightDT (RF, RB);
+vex::motor_group leftDT (LF, LB);
+vex::motor_group driveTrain (RF, LF, RB, LB);
 
-vex::motor LIFT = vex::motor(LIFT_P, MID_RATIO, true);
-vex::motor_group Lift = vex::motor_group(LIFT);
+vex::motor LIFT (LIFT_P, MID_RATIO, true);
+vex::motor_group Lift (LIFT);
 
-vex::motor INTAKE_1 = vex::motor(INTAKE_1_P, MID_RATIO, true);
-vex::motor INTAKE_2 = vex::motor(INTAKE_2_P, MID_RATIO, false);
-vex::motor_group Intake = vex::motor_group(INTAKE_1, INTAKE_2);
+vex::motor INTAKE_1 (INTAKE_1_P, MID_RATIO, true);
+vex::motor INTAKE_2 (INTAKE_2_P, MID_RATIO, false);
+vex::motor_group Intake (INTAKE_1, INTAKE_2);
 
 vex::controller Controller;
 vex::competition Competition;

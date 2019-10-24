@@ -1,92 +1,82 @@
 #include "pid.h"
 #include <cmath>
 
-pid_controller *pid_controller::mself = nullptr;
+static volatile float rot1 = 0.0f;
+static volatile float rot2 = 0.0f;
+static volatile float rot3 = 0.0f;
 
-float pid_controller::pidTarget = 0.0;
-vex::motor_group *pid_controller::motorGroup = nullptr;
+void Measure_1() {
+  while (true) {
+    rot1 = driveTrain.rotation(ROT) * PID_SENSOR_SCALE;
+    vex::this_thread::sleep_for(1);
+  }
+}
 
-float pid_controller::Kp = 0;
-float pid_controller::Ki = 0;
-float pid_controller::Kd = 0;
+void Measure_2() {
+  while (true) {
+    rot2 = driveTrain.rotation(ROT) * PID_SENSOR_SCALE;
+    vex::this_thread::sleep_for(1);
+  }
+}
+
+void Measure_3() {
+  while (true) {
+    rot3 = driveTrain.rotation(ROT) * PID_SENSOR_SCALE;
+    vex::this_thread::sleep_for(1);
+  }
+}
+
+void newPID(double _rots, vex::motor_group *_motorGroup, float _Kp, float _Ki,
+            float _Kd) {
+  vex::thread pid1(&Measure_1);
+  vex::thread pid2(&Measure_2);
+  vex::thread pid3(&Measure_3);
+  pid_controller pid(_rots, _motorGroup, _Kp, _Ki, _Kd);
+  pid.init();
+  pid1.interrupt();
+  pid2.interrupt();
+  pid3.interrupt();
+}
 
 pid_controller::pid_controller(float _pidTarget, vex::motor_group *_motorGroup,
-                               float _Kp, float _Ki, float _Kd) {
-  pid_controller::Kp = _Kp;
-  pid_controller::Ki = _Ki;
-  pid_controller::Kd = _Kd;
-}
+                               float _Kp, float _Ki, float _Kd)
+    : pidTarget(_pidTarget), motorGroup(_motorGroup), Kp(_Kp), Ki(_Ki),
+      Kd(_Kd) {}
 
-void pid_controller::init() {
-  pid_controller::mself->pid_run(pid_controller::pidTarget,
-                                 pid_controller::motorGroup, 1);
-}
+void pid_controller::init() { run(pidTarget, motorGroup); }
 
-void pid_controller::init2() {
-  pid_controller::mself->pid_run(pid_controller::pidTarget,
-                                 pid_controller::motorGroup, 2);
-}
-
-void pid_controller::init3() {
-  pid_controller::mself->pid_run(pid_controller::pidTarget,
-                                 pid_controller::motorGroup, 3);
-}
-
-void pid_controller::pid_run(float pidTarget, vex::motor_group *motorGroup,
-                             uint8_t _pidDrive) {
-  pidErrors[0] = 0;
-  pidLastError = 0;
-  pid2LastError = 0;
-  pid3LastError = 0;
-  pidIntegral = 0;
+void pid_controller::run(float pidTarget, vex::motor_group *motorGroup) {
   motorGroup->resetRotation();
+  pidLastError = motorGroup->rotation(ROT);
+  pidIntegral = 0;
 
-  while (pidErrors[0] != 0) {
-    pidSensorCurrentValue = motorGroup->rotation(ROT) * PID_SENSOR_SCALE;
-    pidErrors[0] = pidSensorCurrentValue - pidTarget;
-    if (std::abs(pidErrors[0]) < PID_INTEGRAL_LIMIT) {
-      pidIntegral += pidErrors[0];
+  do {
+    pidError =
+        pidTarget - ((motorGroup->rotation(ROT) + rot1 + rot2 + rot3) / 4) *
+                        PID_SENSOR_SCALE;
+
+    if (pidError < PID_INTEGRAL_LIMIT) {
+      pidIntegral += pidError;
     } else {
       pidIntegral = 0;
     }
 
-    pidErrors[1] = pidLastError;
-    pidErrors[2] = pid2LastError;
-    pidErrors[3] = pid3LastError;
-    pid3LastError = pid2LastError;
-    pid2LastError = pidLastError;
-    pidLastError = pidErrors[0];
+    pidDerivative = pidError - pidLastError;
 
-    pidDerivative =
-        pidErrors[0] - (pidErrors[1] + pidErrors[2] + pidErrors[3]) / 3;
+    pidLastError = pidError;
 
-    float tpidDrive = (pid_controller::Kp * pidErrors[3]) +
-                      (pid_controller::Ki * pidIntegral) +
-                      (pid_controller::Kd * pidDerivative);
+    pidDrive = (pid_controller::Kp * pidError) +
+               (pid_controller::Ki * pidIntegral) +
+               (pid_controller::Kd * pidDerivative);
 
-    if (tpidDrive > PID_DRIVE_MAX) {
-      tpidDrive = PID_DRIVE_MAX;
-    } else if (tpidDrive < PID_DRIVE_MIN) {
-      tpidDrive = PID_DRIVE_MIN;
+    if (pidDrive > PID_DRIVE_MAX) {
+      pidDrive = PID_DRIVE_MAX;
+    } else if (pidDrive < PID_DRIVE_MIN) {
+      pidDrive = PID_DRIVE_MIN;
     }
 
-    if (_pidDrive == 1) {
-      pidDrive = tpidDrive;
-    } else if (_pidDrive == 2) {
-      pidDrive2 = tpidDrive;
-    } else {
-      pidDrive3 = tpidDrive;
-    }
+    motorGroup->spin(FWD, pidDrive, vPCT);
+  } while (pidError != 0);
 
-    float pidDriveAvg = (pidDrive + pidDrive2 + pidDrive3) / 3;
-
-    if (_pidDrive == 3) {
-      motorGroup->spin(FWD, pidDriveAvg, vPCT);
-    }
-  }
   motorGroup->stop();
-  pidErrors[0] = 0;
-  pidLastError = 0;
-  pidIntegral = 0;
-  pidDerivative = 0;
 }

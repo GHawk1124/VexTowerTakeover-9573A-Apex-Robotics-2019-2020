@@ -1,0 +1,31 @@
+\hypertarget{class_threads_1_1t___drive}{}\doxysection{Threads\+::t\+\_\+\+Drive Class Reference}
+\label{class_threads_1_1t___drive}\index{Threads::t\_Drive@{Threads::t\_Drive}}
+
+
+Inheritance diagram for Threads\+::t\+\_\+\+Drive\+:
+% FIG 0
+
+
+Collaboration diagram for Threads\+::t\+\_\+\+Drive\+:
+% FIG 1
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_threads_1_1t___drive_a3b14fba1e429e9fb01dbdf2428cc0b60}\label{class_threads_1_1t___drive_a3b14fba1e429e9fb01dbdf2428cc0b60}} 
+static \mbox{\hyperlink{class_threads_1_1t___drive}{t\+\_\+\+Drive}} \& {\bfseries tc\+\_\+\+Drive} ()
+\item 
+\mbox{\Hypertarget{class_threads_1_1t___drive_a170fe45531a8d41c091793bec36c9258}\label{class_threads_1_1t___drive_a170fe45531a8d41c091793bec36c9258}} 
+static void {\bfseries entry} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_threads_1_1t___drive_ad7aeaf5b300a8b4f98e4499f2d3d4090}\label{class_threads_1_1t___drive_ad7aeaf5b300a8b4f98e4499f2d3d4090}} 
+static \mbox{\hyperlink{class_threads_1_1t___drive}{t\+\_\+\+Drive}} $\ast$ {\bfseries m\+Self} = nullptr
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/user\+Control.\+h\item 
+src/user\+Control.\+cpp\end{DoxyCompactItemize}

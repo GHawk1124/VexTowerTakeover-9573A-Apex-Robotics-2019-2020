@@ -1,0 +1,61 @@
+\hypertarget{auton_8cpp}{}\doxysection{auton.\+cpp File Reference}
+\label{auton_8cpp}\index{auton.cpp@{auton.cpp}}
+{\ttfamily \#include \char`\"{}auton.\+h\char`\"{}}\newline
+Include dependency graph for auton.\+cpp\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{auton_8cpp_a54e5fc6bd4c61bdc5cca4eb3846e0689}{drive\+Inches}} (double inches, vex\+::brake\+Type brake\+Type)
+\item 
+void \mbox{\hyperlink{auton_8cpp_a48c50cd27a48cb664117bfd926df7c63}{point\+Turn}} (double degrees, vex\+::brake\+Type brake\+Type)
+\item 
+void \mbox{\hyperlink{auton_8cpp_a73552965e099283975cf7d5e5625cc37}{f\+Swing\+Turn}} (double degrees, vex\+::brake\+Type brake\+Type)
+\item 
+void \mbox{\hyperlink{auton_8cpp_a870c66b4d5ff3b12f44f95b41b897a0b}{b\+Swing\+Turn}} (double degrees, vex\+::brake\+Type brake\+Type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const float \mbox{\hyperlink{auton_8cpp_ac9f5527050a4939aaa589b8642394862}{W\+H\+E\+E\+L\+\_\+\+C\+I\+R\+C\+UM}} = \mbox{\hyperlink{user_config_8h_a5419e057d3cc43cca2f87bff5b09cb47}{W\+H\+E\+E\+L\+\_\+\+D\+I\+A\+M\+E\+T\+ER}} $\ast$ \mbox{\hyperlink{user_config_8h_a598a3330b3c21701223ee0ca14316eca}{PI}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{auton_8cpp_a870c66b4d5ff3b12f44f95b41b897a0b}\label{auton_8cpp_a870c66b4d5ff3b12f44f95b41b897a0b}} 
+\index{auton.cpp@{auton.cpp}!bSwingTurn@{bSwingTurn}}
+\index{bSwingTurn@{bSwingTurn}!auton.cpp@{auton.cpp}}
+\doxysubsubsection{\texorpdfstring{bSwingTurn()}{bSwingTurn()}}
+{\footnotesize\ttfamily void b\+Swing\+Turn (\begin{DoxyParamCaption}\item[{double}]{degrees,  }\item[{vex\+::brake\+Type}]{brake\+Type }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{auton_8cpp_a54e5fc6bd4c61bdc5cca4eb3846e0689}\label{auton_8cpp_a54e5fc6bd4c61bdc5cca4eb3846e0689}} 
+\index{auton.cpp@{auton.cpp}!driveInches@{driveInches}}
+\index{driveInches@{driveInches}!auton.cpp@{auton.cpp}}
+\doxysubsubsection{\texorpdfstring{driveInches()}{driveInches()}}
+{\footnotesize\ttfamily void drive\+Inches (\begin{DoxyParamCaption}\item[{double}]{inches,  }\item[{vex\+::brake\+Type}]{brake\+Type }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{auton_8cpp_a73552965e099283975cf7d5e5625cc37}\label{auton_8cpp_a73552965e099283975cf7d5e5625cc37}} 
+\index{auton.cpp@{auton.cpp}!fSwingTurn@{fSwingTurn}}
+\index{fSwingTurn@{fSwingTurn}!auton.cpp@{auton.cpp}}
+\doxysubsubsection{\texorpdfstring{fSwingTurn()}{fSwingTurn()}}
+{\footnotesize\ttfamily void f\+Swing\+Turn (\begin{DoxyParamCaption}\item[{double}]{degrees,  }\item[{vex\+::brake\+Type}]{brake\+Type }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{auton_8cpp_a48c50cd27a48cb664117bfd926df7c63}\label{auton_8cpp_a48c50cd27a48cb664117bfd926df7c63}} 
+\index{auton.cpp@{auton.cpp}!pointTurn@{pointTurn}}
+\index{pointTurn@{pointTurn}!auton.cpp@{auton.cpp}}
+\doxysubsubsection{\texorpdfstring{pointTurn()}{pointTurn()}}
+{\footnotesize\ttfamily void point\+Turn (\begin{DoxyParamCaption}\item[{double}]{degrees,  }\item[{vex\+::brake\+Type}]{brake\+Type }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{auton_8cpp_ac9f5527050a4939aaa589b8642394862}\label{auton_8cpp_ac9f5527050a4939aaa589b8642394862}} 
+\index{auton.cpp@{auton.cpp}!WHEEL\_CIRCUM@{WHEEL\_CIRCUM}}
+\index{WHEEL\_CIRCUM@{WHEEL\_CIRCUM}!auton.cpp@{auton.cpp}}
+\doxysubsubsection{\texorpdfstring{WHEEL\_CIRCUM}{WHEEL\_CIRCUM}}
+{\footnotesize\ttfamily const float W\+H\+E\+E\+L\+\_\+\+C\+I\+R\+C\+UM = \mbox{\hyperlink{user_config_8h_a5419e057d3cc43cca2f87bff5b09cb47}{W\+H\+E\+E\+L\+\_\+\+D\+I\+A\+M\+E\+T\+ER}} $\ast$ \mbox{\hyperlink{user_config_8h_a598a3330b3c21701223ee0ca14316eca}{PI}}}
+

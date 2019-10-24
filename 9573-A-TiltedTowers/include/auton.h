@@ -4,11 +4,6 @@
 #include "pid.h"
 #include "robotConfig.h"
 
-/*
- * @brief Instantiates a pid_controller with set parameters and destroys it when
- *  finished.
- */
-void newPID(double _rots, float __Kp, float __Ki, float __Kd);
 
 /*
  * @brief Drives a specific number of inches that stops with a specific stopping

@@ -1,0 +1,60 @@
+\hypertarget{pid_8h}{}\doxysection{pid.\+h File Reference}
+\label{pid_8h}\index{pid.h@{pid.h}}
+{\ttfamily \#include \char`\"{}robot\+Config.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classpid__controller}{pid\+\_\+controller}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{pid_8h_a7e754922f65a6062a75f0394155c845a}{P\+I\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+C\+A\+LE}}~10
+\item 
+\#define \mbox{\hyperlink{pid_8h_a4ec081867aed740755f68feaa50ecc47}{P\+I\+D\+\_\+\+I\+N\+T\+E\+G\+R\+A\+L\+\_\+\+L\+I\+M\+IT}}~50
+\item 
+\#define \mbox{\hyperlink{pid_8h_a02be2e6fae33049b568f1535f20ccf6c}{P\+I\+D\+\_\+\+D\+R\+I\+V\+E\+\_\+\+M\+AX}}~\mbox{\hyperlink{user_config_8h_a3fb8abe1cf24689e1a895b0e80282acd}{M\+A\+X\+\_\+\+S\+P\+E\+E\+D\+\_\+\+A\+U\+T\+ON}}
+\item 
+\#define \mbox{\hyperlink{pid_8h_a2c7ee81c742fd955a83c90004df01b8a}{P\+I\+D\+\_\+\+D\+R\+I\+V\+E\+\_\+\+M\+IN}}~0
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{pid_8h_a663ddb5296c1d7ae9185d31bad693988}{new\+P\+ID}} (double \+\_\+rots, vex\+::motor\+\_\+group $\ast$\+\_\+motor\+Group, float \+\_\+\+Kp, float \+\_\+\+Ki, float \+\_\+\+Kd)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{pid_8h_a02be2e6fae33049b568f1535f20ccf6c}\label{pid_8h_a02be2e6fae33049b568f1535f20ccf6c}} 
+\index{pid.h@{pid.h}!PID\_DRIVE\_MAX@{PID\_DRIVE\_MAX}}
+\index{PID\_DRIVE\_MAX@{PID\_DRIVE\_MAX}!pid.h@{pid.h}}
+\doxysubsubsection{\texorpdfstring{PID\_DRIVE\_MAX}{PID\_DRIVE\_MAX}}
+{\footnotesize\ttfamily \#define P\+I\+D\+\_\+\+D\+R\+I\+V\+E\+\_\+\+M\+AX~\mbox{\hyperlink{user_config_8h_a3fb8abe1cf24689e1a895b0e80282acd}{M\+A\+X\+\_\+\+S\+P\+E\+E\+D\+\_\+\+A\+U\+T\+ON}}}
+
+\mbox{\Hypertarget{pid_8h_a2c7ee81c742fd955a83c90004df01b8a}\label{pid_8h_a2c7ee81c742fd955a83c90004df01b8a}} 
+\index{pid.h@{pid.h}!PID\_DRIVE\_MIN@{PID\_DRIVE\_MIN}}
+\index{PID\_DRIVE\_MIN@{PID\_DRIVE\_MIN}!pid.h@{pid.h}}
+\doxysubsubsection{\texorpdfstring{PID\_DRIVE\_MIN}{PID\_DRIVE\_MIN}}
+{\footnotesize\ttfamily \#define P\+I\+D\+\_\+\+D\+R\+I\+V\+E\+\_\+\+M\+IN~0}
+
+\mbox{\Hypertarget{pid_8h_a4ec081867aed740755f68feaa50ecc47}\label{pid_8h_a4ec081867aed740755f68feaa50ecc47}} 
+\index{pid.h@{pid.h}!PID\_INTEGRAL\_LIMIT@{PID\_INTEGRAL\_LIMIT}}
+\index{PID\_INTEGRAL\_LIMIT@{PID\_INTEGRAL\_LIMIT}!pid.h@{pid.h}}
+\doxysubsubsection{\texorpdfstring{PID\_INTEGRAL\_LIMIT}{PID\_INTEGRAL\_LIMIT}}
+{\footnotesize\ttfamily \#define P\+I\+D\+\_\+\+I\+N\+T\+E\+G\+R\+A\+L\+\_\+\+L\+I\+M\+IT~50}
+
+\mbox{\Hypertarget{pid_8h_a7e754922f65a6062a75f0394155c845a}\label{pid_8h_a7e754922f65a6062a75f0394155c845a}} 
+\index{pid.h@{pid.h}!PID\_SENSOR\_SCALE@{PID\_SENSOR\_SCALE}}
+\index{PID\_SENSOR\_SCALE@{PID\_SENSOR\_SCALE}!pid.h@{pid.h}}
+\doxysubsubsection{\texorpdfstring{PID\_SENSOR\_SCALE}{PID\_SENSOR\_SCALE}}
+{\footnotesize\ttfamily \#define P\+I\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+C\+A\+LE~10}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{pid_8h_a663ddb5296c1d7ae9185d31bad693988}\label{pid_8h_a663ddb5296c1d7ae9185d31bad693988}} 
+\index{pid.h@{pid.h}!newPID@{newPID}}
+\index{newPID@{newPID}!pid.h@{pid.h}}
+\doxysubsubsection{\texorpdfstring{newPID()}{newPID()}}
+{\footnotesize\ttfamily void new\+P\+ID (\begin{DoxyParamCaption}\item[{double}]{\+\_\+rots,  }\item[{vex\+::motor\+\_\+group $\ast$}]{\+\_\+motor\+Group,  }\item[{float}]{\+\_\+\+Kp,  }\item[{float}]{\+\_\+\+Ki,  }\item[{float}]{\+\_\+\+Kd }\end{DoxyParamCaption})}
+

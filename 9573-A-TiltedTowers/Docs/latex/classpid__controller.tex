@@ -1,0 +1,134 @@
+\hypertarget{classpid__controller}{}\doxysection{pid\+\_\+controller Class Reference}
+\label{classpid__controller}\index{pid\_controller@{pid\_controller}}
+
+
+{\ttfamily \#include $<$pid.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classpid__controller_ada4a3599d3bf79412940110618b0de54}{init}} ()
+\item 
+\mbox{\hyperlink{classpid__controller_aecb7253b87805b28b8a09f075f8083f2}{pid\+\_\+controller}} (float \+\_\+pid\+Target, vex\+::motor\+\_\+group $\ast$\+\_\+motor\+Group, float \+\_\+\+Kp, float \+\_\+\+Ki, float \+\_\+\+Kd)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const float \mbox{\hyperlink{classpid__controller_a1ef85bfa2d57ce2814b8b0554ec3d84c}{pid\+Target}}
+\item 
+vex\+::motor\+\_\+group $\ast$ \mbox{\hyperlink{classpid__controller_a698b838e313db59af3aaf214e886b2d1}{motor\+Group}}
+\item 
+const float \mbox{\hyperlink{classpid__controller_adf6207a14b9a0aa8431f303895b04e31}{Kp}}
+\item 
+const float \mbox{\hyperlink{classpid__controller_ababf0e3fd4de659da4a6c311c30d6174}{Ki}}
+\item 
+const float \mbox{\hyperlink{classpid__controller_a175deb969c68ffe05a4ec94aff17a765}{Kd}}
+\item 
+float \mbox{\hyperlink{classpid__controller_a8b5bf84f25786b153f7fc9d47fecaff5}{pid\+Error}}
+\item 
+float \mbox{\hyperlink{classpid__controller_ab7147bcf2f1815846e99e9e66973ba85}{pid\+Last\+Error}}
+\item 
+float \mbox{\hyperlink{classpid__controller_ad2b684424fee0d57036bef428f9e184a}{pid\+Integral}}
+\item 
+float \mbox{\hyperlink{classpid__controller_a92c41a3b45210beb92dcdf26583bdad4}{pid\+Derivative}}
+\item 
+float \mbox{\hyperlink{classpid__controller_abf682b4ff781ba74f90296951f8fc051}{pid\+Drive}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classpid__controller_a7b2528938ce06b9dd159a495a1fcf4fe}{run}} (float \mbox{\hyperlink{classpid__controller_a1ef85bfa2d57ce2814b8b0554ec3d84c}{pid\+Target}}, vex\+::motor\+\_\+group $\ast$motor)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpid__controller_aecb7253b87805b28b8a09f075f8083f2}\label{classpid__controller_aecb7253b87805b28b8a09f075f8083f2}} 
+\index{pid\_controller@{pid\_controller}!pid\_controller@{pid\_controller}}
+\index{pid\_controller@{pid\_controller}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{pid\_controller()}{pid\_controller()}}
+{\footnotesize\ttfamily pid\+\_\+controller\+::pid\+\_\+controller (\begin{DoxyParamCaption}\item[{float}]{\+\_\+pid\+Target,  }\item[{vex\+::motor\+\_\+group $\ast$}]{\+\_\+motor\+Group,  }\item[{float}]{\+\_\+\+Kp,  }\item[{float}]{\+\_\+\+Ki,  }\item[{float}]{\+\_\+\+Kd }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classpid__controller_ada4a3599d3bf79412940110618b0de54}\label{classpid__controller_ada4a3599d3bf79412940110618b0de54}} 
+\index{pid\_controller@{pid\_controller}!init@{init}}
+\index{init@{init}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void pid\+\_\+controller\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpid__controller_a7b2528938ce06b9dd159a495a1fcf4fe}\label{classpid__controller_a7b2528938ce06b9dd159a495a1fcf4fe}} 
+\index{pid\_controller@{pid\_controller}!run@{run}}
+\index{run@{run}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void pid\+\_\+controller\+::run (\begin{DoxyParamCaption}\item[{float}]{pid\+Target,  }\item[{vex\+::motor\+\_\+group $\ast$}]{motor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classpid__controller_a175deb969c68ffe05a4ec94aff17a765}\label{classpid__controller_a175deb969c68ffe05a4ec94aff17a765}} 
+\index{pid\_controller@{pid\_controller}!Kd@{Kd}}
+\index{Kd@{Kd}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{Kd}{Kd}}
+{\footnotesize\ttfamily const float pid\+\_\+controller\+::\+Kd\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpid__controller_ababf0e3fd4de659da4a6c311c30d6174}\label{classpid__controller_ababf0e3fd4de659da4a6c311c30d6174}} 
+\index{pid\_controller@{pid\_controller}!Ki@{Ki}}
+\index{Ki@{Ki}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{Ki}{Ki}}
+{\footnotesize\ttfamily const float pid\+\_\+controller\+::\+Ki\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpid__controller_adf6207a14b9a0aa8431f303895b04e31}\label{classpid__controller_adf6207a14b9a0aa8431f303895b04e31}} 
+\index{pid\_controller@{pid\_controller}!Kp@{Kp}}
+\index{Kp@{Kp}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{Kp}{Kp}}
+{\footnotesize\ttfamily const float pid\+\_\+controller\+::\+Kp\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpid__controller_a698b838e313db59af3aaf214e886b2d1}\label{classpid__controller_a698b838e313db59af3aaf214e886b2d1}} 
+\index{pid\_controller@{pid\_controller}!motorGroup@{motorGroup}}
+\index{motorGroup@{motorGroup}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{motorGroup}{motorGroup}}
+{\footnotesize\ttfamily vex\+::motor\+\_\+group$\ast$ pid\+\_\+controller\+::motor\+Group\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpid__controller_a92c41a3b45210beb92dcdf26583bdad4}\label{classpid__controller_a92c41a3b45210beb92dcdf26583bdad4}} 
+\index{pid\_controller@{pid\_controller}!pidDerivative@{pidDerivative}}
+\index{pidDerivative@{pidDerivative}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{pidDerivative}{pidDerivative}}
+{\footnotesize\ttfamily float pid\+\_\+controller\+::pid\+Derivative\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpid__controller_abf682b4ff781ba74f90296951f8fc051}\label{classpid__controller_abf682b4ff781ba74f90296951f8fc051}} 
+\index{pid\_controller@{pid\_controller}!pidDrive@{pidDrive}}
+\index{pidDrive@{pidDrive}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{pidDrive}{pidDrive}}
+{\footnotesize\ttfamily float pid\+\_\+controller\+::pid\+Drive\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpid__controller_a8b5bf84f25786b153f7fc9d47fecaff5}\label{classpid__controller_a8b5bf84f25786b153f7fc9d47fecaff5}} 
+\index{pid\_controller@{pid\_controller}!pidError@{pidError}}
+\index{pidError@{pidError}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{pidError}{pidError}}
+{\footnotesize\ttfamily float pid\+\_\+controller\+::pid\+Error\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpid__controller_ad2b684424fee0d57036bef428f9e184a}\label{classpid__controller_ad2b684424fee0d57036bef428f9e184a}} 
+\index{pid\_controller@{pid\_controller}!pidIntegral@{pidIntegral}}
+\index{pidIntegral@{pidIntegral}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{pidIntegral}{pidIntegral}}
+{\footnotesize\ttfamily float pid\+\_\+controller\+::pid\+Integral\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpid__controller_ab7147bcf2f1815846e99e9e66973ba85}\label{classpid__controller_ab7147bcf2f1815846e99e9e66973ba85}} 
+\index{pid\_controller@{pid\_controller}!pidLastError@{pidLastError}}
+\index{pidLastError@{pidLastError}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{pidLastError}{pidLastError}}
+{\footnotesize\ttfamily float pid\+\_\+controller\+::pid\+Last\+Error\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpid__controller_a1ef85bfa2d57ce2814b8b0554ec3d84c}\label{classpid__controller_a1ef85bfa2d57ce2814b8b0554ec3d84c}} 
+\index{pid\_controller@{pid\_controller}!pidTarget@{pidTarget}}
+\index{pidTarget@{pidTarget}!pid\_controller@{pid\_controller}}
+\doxysubsubsection{\texorpdfstring{pidTarget}{pidTarget}}
+{\footnotesize\ttfamily const float pid\+\_\+controller\+::pid\+Target\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{pid_8h}{pid.\+h}}\item 
+\mbox{\hyperlink{pid_8cpp}{pid.\+cpp}}\end{DoxyCompactItemize}
