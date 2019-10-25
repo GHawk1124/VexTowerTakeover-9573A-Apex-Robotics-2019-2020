@@ -37,7 +37,7 @@ void Threads::t_Lift::run() {
 
 void Threads::t_Claw::run() {
   while (true) {
-    Claw.spin(FWD, CLAW_SPEED * Controller.OPEN_CLAW(), vPCT);
+    Claw.spin(FWD, CLAW_SPEED * (Controller.OPEN_CLAW() - !Controller.OPEN_CLAW()), vPCT);
     vex::this_thread::sleep_for(10);
   }
 }
