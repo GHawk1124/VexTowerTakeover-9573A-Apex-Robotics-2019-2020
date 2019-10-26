@@ -11,7 +11,7 @@
  * @param inches Sets the number of inches for the DriveTrain to move.
  * @param brakeType Sets the brakeType for when the function completes.
  */
-void driveInches(double inches,
+void driveInches(double inches, int speed,
                  vex::brakeType brakeType = MOTOR_STOPPING_AUTON);
 
 /*

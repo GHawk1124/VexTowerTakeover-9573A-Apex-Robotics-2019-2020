@@ -19,9 +19,9 @@ void Threads::t_Drive::entry() { Threads::t_Drive::mSelf->run(); }
 
 void Threads::t_Lift::run() {
   while (true) {
-    if (Controller.ButtonL1.pressing()) {
+    if (Controller.ButtonL1.pressing() && std::abs(LIFT.rotation(ROT)) < 1) {
       Lift.setStopping(MOTOR_STOPPING_DRIVE);
-      Lift.spin(FWD, 75, vPCT);
+      Lift.spin(FWD, HALF_SPEED, vPCT);
     } else if (Controller.ButtonL2.pressing()) {
       Lift.setStopping(MOTOR_STOPPING_DRIVE);
       Lift.spin(BWD, HALF_SPEED, vPCT);

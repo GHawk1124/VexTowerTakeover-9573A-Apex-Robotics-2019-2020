@@ -22,11 +22,8 @@ void pre_drive() {
 
 // TODO:
 void autonomous() {
-  driveInches(12, COAST);
-  /*vex::this_thread::sleep_for(1000);
-  pointTurn(90);
-  vex::this_thread::sleep_for(1000);
-  fSwingTurn(90, BRAKE);*/
+  driveInches(60, 40, COAST);
+  driveInches(-55, 40, COAST);
 }
 
 void usercontrol() {
