@@ -16,7 +16,7 @@ void pre_drive() {
   DriveTrain.setMaxTorque(100, PCT);
   DriveTrain.setStopping(MOTOR_STOPPING_DRIVE);
   Lift.setMaxTorque(100, PCT);
-  Lift.setStopping(MOTOR_STOPPING_DRIVE);
+  Lift.setStopping(HOLD);
   Claw.setMaxTorque(100, PCT);
   Claw.setStopping(COAST);
 }
@@ -36,11 +36,7 @@ void usercontrol() {
   Threads::t_Lift::tc_Lift();
 
   while (true) {
-    Brain.Screen.setCursor(1, 1);
-    Brain.Screen.print(Brain.Battery.voltage());
-    Brain.Screen.newLine();
-    Brain.Screen.print(Brain.Battery.current());
-    if (Controller.RESET()) {
+    /*if (Controller.RESET()) {
       Lift.stop(COAST);
       Threads::t_Drive::mSelf = nullptr;
       Threads::t_Claw::mSelf = nullptr;
@@ -49,7 +45,7 @@ void usercontrol() {
       Threads::t_Drive::tc_Drive();
       Threads::t_Claw::tc_Claw();
       Threads::t_Lift::tc_Lift();
-    }
+    }*/
     vex::this_thread::sleep_for(10);
   }
 }
