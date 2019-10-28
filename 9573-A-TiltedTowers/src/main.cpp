@@ -2,8 +2,9 @@
 #include "robotConfig.h"
 #include "userControl.h"
 
+#define LEFT_TURN
+
 void pre_auton() {
-  driveTrain.setMaxTorque(100, PCT);
   driveTrain.setStopping(MOTOR_STOPPING_AUTON);
   Lift.setMaxTorque(100, PCT);
   Lift.setStopping(MOTOR_STOPPING_AUTON);
@@ -12,7 +13,6 @@ void pre_auton() {
 }
 
 void pre_drive() {
-  driveTrain.setMaxTorque(100, PCT);
   driveTrain.setStopping(MOTOR_STOPPING_DRIVE);
   Lift.setMaxTorque(100, PCT);
   Lift.setStopping(MOTOR_STOPPING_DRIVE);
@@ -20,10 +20,55 @@ void pre_drive() {
   Intake.setStopping(MOTOR_STOPPING_DRIVE);
 }
 
-// TODO:
 void autonomous() {
-  driveInches(60, 40, COAST);
-  driveInches(-55, 40, COAST);
+#ifdef LEFT_TURN
+  driveTrain._wheel_circumference = 4;
+  driveInches(35, 20, BRAKE);
+  vex::this_thread::sleep_for(500);
+  driveInches(-22.5, 40, BRAKE);
+  vex::this_thread::sleep_for(200);
+  Intake.spin(FWD, 10, vPCT);
+  driveTrain.turnFor(vex::turnType::left, 116, DEG);
+  Intake.stop();
+  vex::this_thread::sleep_for(200);
+  driveInches(13, 20, BRAKE, false);
+  vex::this_thread::sleep_for(200);
+  Intake.spin(BWD, 50, vPCT);
+  vex::this_thread::sleep_for(1250);
+  Intake.stop();
+  vex::this_thread::sleep_for(500);
+  Liftf(FWD);
+  vex::this_thread::sleep_for(500);
+  driveInches(-12, 20, BRAKE, false);
+  vex::this_thread::sleep_for(500);
+  Liftf(BWD);
+#endif
+#ifdef RIGHT_TURN
+  driveInches(40, 20, BRAKE);
+  vex::this_thread::sleep_for(500);
+  driveInches(-27.5, 40, BRAKE);
+  vex::this_thread::sleep_for(200);
+  Intake.spin(FWD, 10, vPCT);
+  driveTrain.turnFor(vex::turnType::right, 119, DEG);
+  Intake.stop();
+  vex::this_thread::sleep_for(200);
+  driveInches(11, 20, BRAKE, false);
+  vex::this_thread::sleep_for(200);
+  Intake.spin(BWD, 50, vPCT);
+  vex::this_thread::sleep_for(1250);
+  Intake.stop();
+  vex::this_thread::sleep_for(500);
+  Liftf(FWD);
+  vex::this_thread::sleep_for(500);
+  driveInches(-12, 20, BRAKE, false);
+  vex::this_thread::sleep_for(500);
+  Liftf(BWD);
+#endif
+#ifdef SIMPLE
+  driveInches(12, 30, BRAKE, false);
+  vex::this_thread::sleep_for(300);
+  driveInches(-10, 30, BRAKE, false);
+#endif
 }
 
 void usercontrol() {

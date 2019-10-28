@@ -1,7 +1,7 @@
 #ifndef AUTON
 #define AUTON
 
-#include "pid.h"
+//#include "pid.h"
 #include "robotConfig.h"
 
 
@@ -12,7 +12,7 @@
  * @param brakeType Sets the brakeType for when the function completes.
  */
 void driveInches(double inches, int speed,
-                 vex::brakeType brakeType = MOTOR_STOPPING_AUTON);
+                 vex::brakeType brakeType = MOTOR_STOPPING_AUTON, bool intake=true);
 
 /*
  * @brief Turns the bot a specific number of degrees while staying in place.
@@ -39,5 +39,7 @@ void fSwingTurn(double degrees,
  */
 void bSwingTurn(double degrees,
                 vex::brakeType brakeType = MOTOR_STOPPING_AUTON);
+
+void Liftf(vex::directionType dir);
 
 #endif

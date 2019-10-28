@@ -7,21 +7,21 @@ static volatile float rot3 = 0.0f;
 
 void Measure_1() {
   while (true) {
-    rot1 = driveTrain.rotation(ROT) * PID_SENSOR_SCALE;
+    //rot1 = driveTrain.rotation(ROT) * PID_SENSOR_SCALE;
     vex::this_thread::sleep_for(1);
   }
 }
 
 void Measure_2() {
   while (true) {
-    rot2 = driveTrain.rotation(ROT) * PID_SENSOR_SCALE;
+    //rot2 = driveTrain.rotation(ROT) * PID_SENSOR_SCALE;
     vex::this_thread::sleep_for(1);
   }
 }
 
 void Measure_3() {
   while (true) {
-    rot3 = driveTrain.rotation(ROT) * PID_SENSOR_SCALE;
+    //rot3 = driveTrain.rotation(ROT) * PID_SENSOR_SCALE;
     vex::this_thread::sleep_for(1);
   }
 }

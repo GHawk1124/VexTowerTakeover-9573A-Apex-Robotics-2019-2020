@@ -11,11 +11,12 @@
 
 /* Consts */
 #define LIFT_SPEED 75
-#define INTAKE_SPEED 85
-#define MAX_SPEED 100
+#define INTAKE_SPEED 100
+#define MAX_SPEED 75
 #define MAX_SPEED_AUTON 100
 #define HALF_SPEED 50
 #define OFF 0
+#define DRIVE_TRAIN_SPEED_RATIO 1
 
 // Sets the Stopping Type for Auton and Drive
 // Hold: Motor holds at end position, Brake: Hardstop forces motor at end
