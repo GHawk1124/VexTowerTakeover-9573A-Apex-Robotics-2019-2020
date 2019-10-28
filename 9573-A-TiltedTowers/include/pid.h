@@ -4,16 +4,16 @@
 #include "robotConfig.h"
 
 // Defines basic constants
-#define PID_SENSOR_SCALE 5
+#define PID_SENSOR_SCALE 3
 #define PID_INTEGRAL_LIMIT 50
 #define PID_DRIVE_MAX MAX_SPEED_AUTON
-#define PID_DRIVE_MIN 0
+#define PID_DRIVE_MIN 10
 
 /*
  * @brief Instantiates a pid_controller with set parameters and destroys it when
  *  finished.
  */
-void newPID(double _rots, vex::motor_group *_motorGroup, float _Kp, float _Ki, float _Kd);
+void newPID(double _rots, float _Kp, float _Ki, float _Kd);
 
 /*
  * @brief Controller for a pid loop.
@@ -30,8 +30,7 @@ public:
    *  the creation of different types of PID loops for each of the applications
    *  of the bot.
    */
-  pid_controller(float _pidTarget, vex::motor_group *_motorGroup, float _Kp,
-                 float _Ki, float _Kd);
+  pid_controller(float _pidTarget, float _Kp, float _Ki, float _Kd);
 
 protected:
   /*
@@ -42,7 +41,7 @@ protected:
   /*
    * @brief Defines the Motor Group to act on.
    */
-  vex::motor_group *motorGroup;
+  // vex::motor_group *drivetrain;
 
   /*
    * @brief Defines the PID tuning constants (defined in constructor)
@@ -70,7 +69,7 @@ private:
    * @brief Starts the PID loop that eases into the correct encoder values
    *  driving the correct number of rotations
    */
-  void run(float pidTarget, vex::motor_group *motor);
+  void run(float pidTarget);
 };
 
 #endif

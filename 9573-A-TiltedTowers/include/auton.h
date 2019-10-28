@@ -1,7 +1,7 @@
 #ifndef AUTON
 #define AUTON
 
-//#include "pid.h"
+#include "pid.h"
 #include "robotConfig.h"
 
 

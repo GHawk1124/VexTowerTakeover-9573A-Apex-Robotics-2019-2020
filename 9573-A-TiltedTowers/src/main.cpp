@@ -2,7 +2,7 @@
 #include "robotConfig.h"
 #include "userControl.h"
 
-#define LEFT_TURN
+#define AUTON_TESTING
 
 void pre_auton() {
   driveTrain.setStopping(MOTOR_STOPPING_AUTON);
@@ -93,6 +93,9 @@ void usercontrol() {
 }
 
 int main() {
+#ifdef AUTON_TESTING
+  newPID(3, 1, 0, 0);
+#endif
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 
