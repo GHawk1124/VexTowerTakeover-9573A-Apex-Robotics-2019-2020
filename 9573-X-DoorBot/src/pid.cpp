@@ -1,4 +1,4 @@
-#include "pid.h"
+/*#include "pid.h"
 #include <cmath>
 
 static volatile float rot1 = 0.0f;
@@ -79,4 +79,4 @@ void pid_controller::run(float pidTarget, vex::motor_group *motorGroup) {
   } while (pidError != 0);
 
   motorGroup->stop();
-}
+}*/

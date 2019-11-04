@@ -1,11 +1,12 @@
-
-#include "auton.h"
 #include "robotConfig.h"
 #include "userControl.h"
+#include "auton.h"
 
 void pre_auton() {
-  DriveTrain.setMaxTorque(100, PCT);
-  DriveTrain.setStopping(MOTOR_STOPPING_AUTON);
+  RF.setStopping(MOTOR_STOPPING_DRIVE);
+  LF.setStopping(MOTOR_STOPPING_DRIVE);
+  RB.setStopping(MOTOR_STOPPING_DRIVE);
+  LB.setStopping(MOTOR_STOPPING_DRIVE);
   Lift.setMaxTorque(100, PCT);
   Lift.setStopping(MOTOR_STOPPING_AUTON);
   Claw.setMaxTorque(100, PCT);
@@ -13,8 +14,10 @@ void pre_auton() {
 }
 
 void pre_drive() {
-  DriveTrain.setMaxTorque(100, PCT);
-  DriveTrain.setStopping(MOTOR_STOPPING_DRIVE);
+  RF.setStopping(MOTOR_STOPPING_DRIVE);
+  LF.setStopping(MOTOR_STOPPING_DRIVE);
+  RB.setStopping(MOTOR_STOPPING_DRIVE);
+  LB.setStopping(MOTOR_STOPPING_DRIVE);
   Lift.setMaxTorque(100, PCT);
   Lift.setStopping(HOLD);
   Claw.setMaxTorque(100, PCT);
@@ -22,18 +25,19 @@ void pre_drive() {
 }
 
 void autonomous() {
-  driveInches(12, COAST);
-  vex::this_thread::sleep_for(1000);
-  pointTurn(90);
-  vex::this_thread::sleep_for(1000);
+  strafeInches(24);
+  /*pointTurn(180);
+  driveInches(24);*/
 }
 
 void usercontrol() {
   pre_drive();
 
+  autonomous();
+  
   Threads::t_Drive::tc_Drive();
-  Threads::t_Claw::tc_Claw();
-  Threads::t_Lift::tc_Lift();
+  //Threads::t_Claw::tc_Claw();
+  //Threads::t_Lift::tc_Lift();
 
   while (true) {
     /*if (Controller.RESET()) {
@@ -59,4 +63,5 @@ int main() {
   while (true) {
     vex::task::sleep(100);
   }
+  return 0;
 }

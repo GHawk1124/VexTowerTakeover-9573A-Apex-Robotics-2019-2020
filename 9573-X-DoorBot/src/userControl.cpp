@@ -20,7 +20,7 @@ void Threads::t_Drive::entry() { Threads::t_Drive::mSelf->run(); }
 void Threads::t_Lift::run() {
   Lift.setStopping(HOLD);
   int ll, rl;
-  while (Threads::t_Lift::mSelf != nullptr) {
+  while (true) {
     ll = LEFT_LIFT.rotation(DEG);
     rl = RIGHT_LIFT.rotation(DEG);
     LEFT_LIFT.spin(BWD,
@@ -42,38 +42,15 @@ void Threads::t_Claw::run() {
   }
 }
 
-void Threads::t_Drive::Tank() {
-  while (true) {
-    DriveTrainLeft.spin(FWD, Controller.RIGHT_JOY_VERT(), vPCT);
-    DriveTrainRight.spin(FWD, Controller.LEFT_JOY_VERT(), vPCT);
-  }
-}
-
-void Threads::t_Drive::SS_Arcade() {
-  while (true) {
-    DriveTrainLeft.spin(
-        FWD, (Controller.LEFT_JOY_VERT() + Controller.LEFT_JOY_HORIZ()), vPCT);
-    DriveTrainRight.spin(
-        FWD, (Controller.LEFT_JOY_VERT() - Controller.LEFT_JOY_HORIZ()), vPCT);
-  }
-}
-
-void Threads::t_Drive::TS_Arcade() {
-  while (true) {
-    DriveTrainLeft.spin(
-        FWD, (Controller.LEFT_JOY_VERT() + Controller.RIGHT_JOY_HORIZ()), vPCT);
-    DriveTrainRight.spin(
-        FWD, (Controller.LEFT_JOY_VERT() - Controller.RIGHT_JOY_HORIZ()), vPCT);
-  }
-}
-
 void Threads::t_Drive::run() {
-  if (DRIVE_TYPE == 1)
-    Threads::t_Drive::Tank();
-
-  if (DRIVE_TYPE == 3)
-    Threads::t_Drive::SS_Arcade();
-
-  if (DRIVE_TYPE == 2)
-    Threads::t_Drive::TS_Arcade();
+  int X1 = 0, X2 = 0, Y1 = 0, deadzone = 15;
+  while (true) {
+    Y1 = abs(Controller.LEFT_JOY_VERT()) > deadzone ? -Controller.LEFT_JOY_VERT() : 0;
+    X1 = abs(Controller.LEFT_JOY_HORIZ()) > deadzone ? Controller.LEFT_JOY_HORIZ() : 0;
+    X2 = abs(Controller.RIGHT_JOY_HORIZ()) > deadzone ? Controller.RIGHT_JOY_HORIZ() : 0;
+    LF.spin(FWD, Y1 + X2 + X1, vPCT);
+    LB.spin(FWD, Y1 + X2 - X1, vPCT);
+    RF.spin(FWD, Y1 - X2 - X1, vPCT);
+    RB.spin(FWD, Y1 - X2 + X1, vPCT);
+  }
 }
