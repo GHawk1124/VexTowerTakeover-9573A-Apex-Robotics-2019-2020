@@ -12,10 +12,10 @@ void spinLeft() {
   }
 }
 
-  newPID(rots, &DriveTrain, 1, 0, 0);
 void spinRight() {
   while (std::abs(rightRots - driveTrainRight.rotation(ROT)) >= 0.01) {
     driveTrainRight.spin(FWD, MAX_SPEED_AUTON * (rightRots - driveTrainRight.rotation(ROT)), vPCT);
+  }
 }
 
 void spinXLeft() {
@@ -55,7 +55,7 @@ void driveInches(double inches) {
 void strafeInches(double inches) {
   leftXRots = 2 * inches / WHEEL_CIRCUM;
   rightXRots = -leftXRots;
-  startDriveXTrain());
+  startDriveXTrain();
 }
 
 void pointTurn(double degrees) {

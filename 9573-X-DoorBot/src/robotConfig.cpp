@@ -3,10 +3,10 @@
 
 vex::brain Brain;
 
-vex::motor RF (RF_P, MID_RATIO, false);
-vex::motor LF (LF_P, MID_RATIO, true);
-vex::motor RB (RB_P, MID_RATIO, false);
-vex::motor LB (LB_P, MID_RATIO, true);
+vex::motor RF (RF_P, MID_RATIO, true);
+vex::motor LF (LF_P, MID_RATIO, false);
+vex::motor RB (RB_P, MID_RATIO, true);
+vex::motor LB (LB_P, MID_RATIO, false);
 vex::motor_group driveTrainLeft (LF, LB);
 vex::motor_group driveTrainRight (RF, RB);
 vex::motor_group driveTrainXLeft (LF, RB);

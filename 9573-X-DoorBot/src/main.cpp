@@ -32,8 +32,6 @@ void autonomous() {
 
 void usercontrol() {
   pre_drive();
-
-  autonomous();
   
   Threads::t_Drive::tc_Drive();
   //Threads::t_Claw::tc_Claw();
