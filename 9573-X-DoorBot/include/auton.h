@@ -6,8 +6,12 @@ void driveInches(double inches);
 
 void strafeInches(double inches);
 
-void strafeDiagonalInches(double inches);
-
 void pointTurn(double rots);
+
+void closeClaw();
+
+void openClaw();
+
+void liftTo(double degrees);
 
 #endif

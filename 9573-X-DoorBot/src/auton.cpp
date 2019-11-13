@@ -4,7 +4,7 @@
 #include <cmath>
 
 static const double WHEEL_CIRCUM = WHEEL_DIAMETER * PI;
-static double leftRots = 0, rightRots = 0, leftXRots = 0, rightXRots = 0;
+static double leftRots = 0, rightRots = 0, leftXRots = 0, rightXRots = 0, liftDeg = 0;
 
 void spinLeft() {
   while (std::abs(leftRots - driveTrainLeft.rotation(ROT)) >= 0.01) {
@@ -15,6 +15,12 @@ void spinLeft() {
 void spinRight() {
   while (std::abs(rightRots - driveTrainRight.rotation(ROT)) >= 0.01) {
     driveTrainRight.spin(FWD, MAX_SPEED_AUTON * (rightRots - driveTrainRight.rotation(ROT)), vPCT);
+  }
+}
+
+void spinLift() {
+  while (std::abs(liftDeg - Lift.rotation(DEG)) >= 0.01) {
+    Lift.spin(FWD, MAX_SPEED_AUTON * (liftDeg - Lift.rotation(DEG)), vPCT);
   }
 }
 
@@ -47,6 +53,12 @@ void startDriveXTrain() {
   right.join();
 }
 
+void startLift() {
+  Lift.resetRotation();
+  vex::thread lift (spinLift);
+  lift.join();
+}
+
 void driveInches(double inches) {
   leftRots = rightRots = -inches / WHEEL_CIRCUM;
   startDriveTrain();
@@ -63,4 +75,18 @@ void pointTurn(double degrees) {
   leftRots = rots;
   rightRots = -rots;
   startDriveTrain();
+}
+
+void closeClaw() {
+  Claw.spin(FWD, 100, vPCT);
+}
+
+void openClaw() {
+  Claw.stop();
+  Claw.rotateTo(0, DEG);
+}
+
+void liftTo(double degrees) {
+  liftDeg = degrees;
+  startLift();
 }
