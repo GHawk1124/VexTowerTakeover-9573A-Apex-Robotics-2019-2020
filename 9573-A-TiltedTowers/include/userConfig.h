@@ -27,15 +27,15 @@
 /* Robot */
 
 // Define for each Robot
-#define WHEEL_DIAMETER 4.00 // FLOAT
+#define WHEEL_DIAMETER 2.50 // FLOAT
 #define PI 3.14159265
 #define BOT_WIDTH 14.50                 // FLOAT
 
 /* Ports */
 
 // Define for each Robot
-#define RF_P vex::PORT19
-#define LF_P vex::PORT12
+#define RF_P vex::PORT2
+#define LF_P vex::PORT1
 #define RB_P vex::PORT20
 #define LB_P vex::PORT11
 #define LIFT_P vex::PORT9

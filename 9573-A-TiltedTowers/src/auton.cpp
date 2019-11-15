@@ -3,8 +3,8 @@
 
 const float WHEEL_CIRCUM = WHEEL_DIAMETER * PI;
 
-void driveInches(double inches, int speed, vex::brakeType brakeType,
-                 bool intake) {
+void driveInches(double inches, int speed, bool intake, int timeToSleep,
+                 vex::brakeType brakeType) {
   // double rots = inches / (WHEEL_CIRCUM);
   driveTrain.setStopping(brakeType);
   Intake.spin(FWD, intake * MAX_SPEED, vPCT);
@@ -15,6 +15,13 @@ void driveInches(double inches, int speed, vex::brakeType brakeType,
                         vPCT, true);
   }
   Intake.stop();
+  vex::this_thread::sleep_for(timeToSleep);
+}
+
+void newDriveInches(double inches, bool intake, int timeToSleep,
+                    vex::brakeType brakeType) {
+  double rots = inches / WHEEL_CIRCUM;
+  newPID(rots, 1, 0, 0);
 }
 
 void pointTurn(double degrees, vex::brakeType brakeType) {
@@ -59,9 +66,14 @@ void bSwingTurn(double degrees, vex::brakeType brakeType) {
   }
 }
 
-void Liftf(vex::directionType dir) {
-  float ltime = 1;
+void Liftf(vex::directionType dir, float ltime) {
   Lift.spin(dir, LIFT_SPEED, vPCT);
-  vex::this_thread::sleep_for(ltime * 1000);
+  vex::this_thread::sleep_for(ltime);
   Lift.stop();
+}
+
+void Intakef(vex::directionType dir, float ltime) {
+  Intake.spin(dir, INTAKE_SPEED, vPCT);
+  vex::this_thread::sleep_for(ltime);
+  Intake.stop();
 }

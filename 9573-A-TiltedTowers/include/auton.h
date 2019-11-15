@@ -4,15 +4,18 @@
 #include "pid.h"
 #include "robotConfig.h"
 
-
 /*
  * @brief Drives a specific number of inches that stops with a specific stopping
  *  type.
  * @param inches Sets the number of inches for the DriveTrain to move.
  * @param brakeType Sets the brakeType for when the function completes.
  */
-void driveInches(double inches, int speed,
-                 vex::brakeType brakeType = MOTOR_STOPPING_AUTON, bool intake=true);
+void driveInches(double inches, int speed, bool intake = true,
+                 int timeToSleep = 0,
+                 vex::brakeType brakeType = MOTOR_STOPPING_AUTON);
+
+void newDriveInches(double inches, bool intake = true, int timeToSleep = 0,
+                    vex::brakeType brakeType = MOTOR_STOPPING_AUTON);
 
 /*
  * @brief Turns the bot a specific number of degrees while staying in place.
@@ -40,6 +43,8 @@ void fSwingTurn(double degrees,
 void bSwingTurn(double degrees,
                 vex::brakeType brakeType = MOTOR_STOPPING_AUTON);
 
-void Liftf(vex::directionType dir);
+void Liftf(vex::directionType dir, float ltime);
+
+void Intakef(vex::directionType dir, float ltime);
 
 #endif

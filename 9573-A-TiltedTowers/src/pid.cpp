@@ -91,7 +91,7 @@ void pid_controller::run(float pidTarget) {
     } else {
       mgdriveTrain.spin(BWD, pidDrive * PID_SENSOR_SCALE, vPCT);
     }
-  } while (pidError <= -1 || pidError >= 1);
+  } while (pidError <= -0.1f || pidError >= 0.1f);
 
   mgdriveTrain.stop();
 }

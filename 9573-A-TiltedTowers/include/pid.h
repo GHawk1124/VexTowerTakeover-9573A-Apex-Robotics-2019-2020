@@ -4,9 +4,9 @@
 #include "robotConfig.h"
 
 // Defines basic constants
-#define PID_SENSOR_SCALE 3
+#define PID_SENSOR_SCALE 5
 #define PID_INTEGRAL_LIMIT 50
-#define PID_DRIVE_MAX MAX_SPEED_AUTON
+#define PID_DRIVE_MAX 50
 #define PID_DRIVE_MIN 10
 
 /*

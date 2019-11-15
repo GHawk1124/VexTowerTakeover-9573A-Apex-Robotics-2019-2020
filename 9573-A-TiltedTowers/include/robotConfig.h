@@ -21,6 +21,8 @@
 // Directions
 #define FWD vex::directionType::fwd
 #define BWD vex::directionType::rev
+#define LEFT vex::turnType::left
+#define RIGHT vex::turnType::right
 // Velocity Units
 #define vPCT vex::velocityUnits::pct
 // Rotation Units

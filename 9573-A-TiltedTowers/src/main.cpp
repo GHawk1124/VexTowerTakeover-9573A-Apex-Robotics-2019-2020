@@ -2,7 +2,7 @@
 #include "robotConfig.h"
 #include "userControl.h"
 
-#define AUTON_TESTING
+#define LEFT_TURN
 
 void pre_auton() {
   driveTrain.setStopping(MOTOR_STOPPING_AUTON);
@@ -22,52 +22,35 @@ void pre_drive() {
 
 void autonomous() {
 #ifdef LEFT_TURN
-  driveTrain._wheel_circumference = 4;
-  driveInches(35, 20, BRAKE);
-  vex::this_thread::sleep_for(500);
-  driveInches(-22.5, 40, BRAKE);
-  vex::this_thread::sleep_for(200);
+  driveInches(35, 20, true, 500, BRAKE);
+  driveInches(-22.5, 40, true, 200, BRAKE);
   Intake.spin(FWD, 10, vPCT);
-  driveTrain.turnFor(vex::turnType::left, 116, DEG);
+  driveTrain.turnFor(LEFT, 116, DEG);
   Intake.stop();
   vex::this_thread::sleep_for(200);
-  driveInches(13, 20, BRAKE, false);
-  vex::this_thread::sleep_for(200);
-  Intake.spin(BWD, 50, vPCT);
-  vex::this_thread::sleep_for(1250);
-  Intake.stop();
-  vex::this_thread::sleep_for(500);
-  Liftf(FWD);
-  vex::this_thread::sleep_for(500);
-  driveInches(-12, 20, BRAKE, false);
-  vex::this_thread::sleep_for(500);
-  Liftf(BWD);
+  driveInches(13, 20, 200, false, BRAKE);
+  Intakef(BWD, 1250);
+  Liftf(FWD, 1000);
+  driveInches(-12, 20, 500, false, BRAKE);
+  Liftf(BWD, 1000);
 #endif
 #ifdef RIGHT_TURN
-  driveInches(40, 20, BRAKE);
-  vex::this_thread::sleep_for(500);
-  driveInches(-27.5, 40, BRAKE);
-  vex::this_thread::sleep_for(200);
+  driveInches(40, 20, true, 500, BRAKE);
+  driveInches(-27.5, 40, true, 200, BRAKE);
   Intake.spin(FWD, 10, vPCT);
-  driveTrain.turnFor(vex::turnType::right, 119, DEG);
+  driveTrain.turnFor(RIGHT, 119, DEG);
   Intake.stop();
   vex::this_thread::sleep_for(200);
-  driveInches(11, 20, BRAKE, false);
-  vex::this_thread::sleep_for(200);
-  Intake.spin(BWD, 50, vPCT);
-  vex::this_thread::sleep_for(1250);
-  Intake.stop();
-  vex::this_thread::sleep_for(500);
-  Liftf(FWD);
-  vex::this_thread::sleep_for(500);
-  driveInches(-12, 20, BRAKE, false);
-  vex::this_thread::sleep_for(500);
-  Liftf(BWD);
+  driveInches(11, 20, 200, false, BRAKE);
+  Intakef(BWD, 1250);
+  Liftf(FWD, 1000);
+  driveInches(-12, 20, 500, false, BRAKE);
+  Liftf(BWD, 1000);
 #endif
 #ifdef SIMPLE
-  driveInches(12, 30, BRAKE, false);
+  driveInches(12, 30, 300, false, BRAKE);
   vex::this_thread::sleep_for(300);
-  driveInches(-10, 30, BRAKE, false);
+  driveInches(-10, 30, 300, false, BRAKE);
 #endif
 }
 
@@ -93,9 +76,6 @@ void usercontrol() {
 }
 
 int main() {
-#ifdef AUTON_TESTING
-  newPID(3, 1, 0, 0);
-#endif
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 
