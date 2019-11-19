@@ -23,14 +23,16 @@ void Threads::t_Lift::run() {
   while (true) {
     ll = LEFT_LIFT.rotation(DEG);
     rl = RIGHT_LIFT.rotation(DEG);
-    LEFT_LIFT.spin(BWD,
+    LEFT_LIFT.spin(FWD,
                    LIFT_SPEED * Controller.RAISE_LIFT() -
                        LIFT_SPEED / 3 * Controller.LOWER_LIFT() + ll - rl,
                    vPCT);
-    RIGHT_LIFT.spin(BWD,
+    RIGHT_LIFT.spin(FWD,
                     LIFT_SPEED * Controller.RAISE_LIFT() -
                         LIFT_SPEED / 3 * Controller.LOWER_LIFT() + rl - ll,
                     vPCT);
+    //    Lift.spin(FWD, LIFT_SPEED * (Controller.RAISE_LIFT() -
+    //    Controller.LOWER_LIFT()), vPCT);
     vex::this_thread::sleep_for(10);
   }
 }
@@ -45,9 +47,15 @@ void Threads::t_Claw::run() {
 void Threads::t_Drive::run() {
   int X1 = 0, X2 = 0, Y1 = 0, deadzone = 15;
   while (true) {
-    Y1 = abs(Controller.LEFT_JOY_VERT()) > deadzone ? -Controller.LEFT_JOY_VERT() : 0;
-    X1 = abs(Controller.LEFT_JOY_HORIZ()) > deadzone ? Controller.LEFT_JOY_HORIZ() : 0;
-    X2 = abs(Controller.RIGHT_JOY_HORIZ()) > deadzone ? Controller.RIGHT_JOY_HORIZ() : 0;
+    Y1 = abs(Controller.LEFT_JOY_VERT()) > deadzone
+             ? -Controller.LEFT_JOY_VERT()
+             : 0;
+    X1 = abs(Controller.LEFT_JOY_HORIZ()) > deadzone
+             ? Controller.LEFT_JOY_HORIZ()
+             : 0;
+    X2 = abs(Controller.RIGHT_JOY_HORIZ()) > deadzone
+             ? Controller.RIGHT_JOY_HORIZ()
+             : 0;
     LF.spin(FWD, Y1 + X2 + X1, vPCT);
     LB.spin(FWD, Y1 + X2 - X1, vPCT);
     RF.spin(FWD, Y1 - X2 - X1, vPCT);

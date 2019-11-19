@@ -23,13 +23,13 @@
 /* Ports */
 
 // Define for each Robot
-#define RF_P vex::PORT20
-#define LF_P vex::PORT11
-#define RB_P vex::PORT10
-#define LB_P vex::PORT1
-#define LEFT_LIFT_P vex::PORT1
-#define RIGHT_LIFT_P vex::PORT10
-#define CLAW_P vex::PORT12
+#define RF_P vex::PORT11
+#define LF_P vex::PORT20
+#define RB_P vex::PORT12
+#define LB_P vex::PORT19
+#define LEFT_LIFT_P vex::PORT10
+#define RIGHT_LIFT_P vex::PORT1
+#define CLAW_P vex::PORT9
 
 // Consts
 #define LIFT_SPEED 75
