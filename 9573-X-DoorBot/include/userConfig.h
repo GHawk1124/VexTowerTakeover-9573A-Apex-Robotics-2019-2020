@@ -43,6 +43,5 @@
 #define RAISE_LIFT ButtonR1.pressing
 #define LOWER_LIFT ButtonR2.pressing
 #define OPEN_CLAW ButtonL1.pressing
-#define RESET ButtonY.pressing
 
 #endif

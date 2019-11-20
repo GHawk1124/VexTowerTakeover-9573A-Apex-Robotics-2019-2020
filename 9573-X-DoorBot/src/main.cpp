@@ -28,7 +28,7 @@ void pre_drive() {
 void autonomous() {
   driveInches(39);
   driveInches(-15);
-  strafeInches(6.5);
+  strafeInches(-6.5);
   pointTurn(-90);
   driveInches(7);
   closeClaw();
@@ -36,13 +36,15 @@ void autonomous() {
   pointTurn(-90);
   driveInches(11);
   // Not exact
-  liftTo(180);
+  //liftTo(180);
   driveInches(2);
   openClaw();
   driveInches(-12);
 }
 
 void usercontrol() {
+  //autonomous();
+  //pre_auton();
   pre_drive();
 
   Threads::t_Drive::tc_Drive();
