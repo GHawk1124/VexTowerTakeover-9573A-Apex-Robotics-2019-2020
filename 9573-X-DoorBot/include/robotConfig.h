@@ -49,9 +49,11 @@ extern vex::motor RF;
 extern vex::motor LF;
 extern vex::motor RB;
 extern vex::motor LB;
-extern vex::motor_group DriveTrainLeft;
-extern vex::motor_group DriveTrainRight;
-extern vex::motor_group DriveTrain;
+extern vex::motor_group driveTrainLeft;
+extern vex::motor_group driveTrainRight;
+extern vex::motor_group driveTrainXLeft;
+extern vex::motor_group driveTrainXRight;
+extern vex::motor_group driveTrain;
 
 extern vex::motor LEFT_LIFT;
 extern vex::motor RIGHT_LIFT;
