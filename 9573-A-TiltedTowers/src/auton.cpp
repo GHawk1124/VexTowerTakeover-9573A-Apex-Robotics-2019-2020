@@ -5,15 +5,18 @@ const float WHEEL_CIRCUM = WHEEL_DIAMETER * PI;
 
 void driveInches(double inches, int speed, bool intake, int timeToSleep,
                  vex::brakeType brakeType) {
-  // double rots = inches / (WHEEL_CIRCUM);
   driveTrain.setStopping(brakeType);
   Intake.spin(FWD, intake * MAX_SPEED, vPCT);
-  if (inches > 0) {
-    driveTrain.driveFor(FWD, inches, vex::distanceUnits::in, speed, vPCT, true);
-  } else {
-    driveTrain.driveFor(BWD, std::abs(inches), vex::distanceUnits::in, speed,
-                        vPCT, true);
-  }
+  driveTrain.driveFor(FWD, inches, vex::distanceUnits::in, speed, vPCT, true);
+  Intake.stop();
+  vex::this_thread::sleep_for(timeToSleep);
+}
+
+void turnDegrees(double inches, int speed, bool intake, int timeToSleep,
+                 vex::brakeType brakeType) {
+  driveTrain.setStopping(brakeType);
+  Intake.spin(FWD, intake * MAX_SPEED, vPCT);
+  driveTrain.driveFor(FWD, inches, vex::distanceUnits::in, speed, vPCT, true);
   Intake.stop();
   vex::this_thread::sleep_for(timeToSleep);
 }

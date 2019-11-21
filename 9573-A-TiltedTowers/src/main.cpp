@@ -21,7 +21,7 @@ void pre_drive() {
 }
 
 void autonomous() {
-#ifdef LEFT_TURN
+#ifdef STACK_1_HIGH_BLUE
   driveInches(35, 20, true, 500, BRAKE);
   driveInches(-22.5, 40, true, 200, BRAKE);
   Intake.spin(FWD, 10, vPCT);
@@ -34,7 +34,7 @@ void autonomous() {
   driveInches(-12, 20, 500, false, BRAKE);
   Liftf(BWD, 1000);
 #endif
-#ifdef RIGHT_TURN
+#ifdef STACK_4_HIGH_BLUE
   driveInches(40, 20, true, 500, BRAKE);
   driveInches(-27.5, 40, true, 200, BRAKE);
   Intake.spin(FWD, 10, vPCT);
@@ -46,6 +46,12 @@ void autonomous() {
   Liftf(FWD, 1000);
   driveInches(-12, 20, 500, false, BRAKE);
   Liftf(BWD, 1000);
+#endif
+#ifdef STACK_1_HIGH_RED
+// TODO
+#endif
+#ifdef STACK_4_HIGH_RED
+// TODO
 #endif
 #ifdef SIMPLE
   driveInches(12, 30, 300, false, BRAKE);
