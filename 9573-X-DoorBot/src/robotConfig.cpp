@@ -1,20 +1,23 @@
+
 #include "robotConfig.h"
 
 vex::brain Brain;
 
-vex::motor RF = vex::motor(RF_P, MID_RATIO, true);
-vex::motor LF = vex::motor(LF_P, MID_RATIO, false);
-vex::motor RB = vex::motor(RB_P, MID_RATIO, true);
-vex::motor LB = vex::motor(LB_P, MID_RATIO, false);
-vex::motor_group DriveTrainLeft = vex::motor_group(LF, LB);
-vex::motor_group DriveTrainRight = vex::motor_group(RF, RB);
-vex::motor_group DriveTrain = vex::motor_group(RF, LF, RB, LB);
+vex::motor RF(RF_P, MID_RATIO, false);
+vex::motor LF(LF_P, MID_RATIO, true);
+vex::motor RB(RB_P, MID_RATIO, false);
+vex::motor LB(LB_P, MID_RATIO, true);
+vex::motor_group driveTrainLeft(LF, LB);
+vex::motor_group driveTrainRight(RF, RB);
+vex::motor_group driveTrainXLeft(LF, RB);
+vex::motor_group driveTrainXRight(RF, LB);
+vex::motor_group driveTrain(LF, LB, RF, RB);
 
-vex::motor LEFT_LIFT = vex::motor(LEFT_LIFT_P, TORQUE_RATIO, false);
-vex::motor RIGHT_LIFT = vex::motor(RIGHT_LIFT_P, TORQUE_RATIO, true);
-vex::motor_group Lift = vex::motor_group(LEFT_LIFT, RIGHT_LIFT);
+vex::motor LEFT_LIFT(LEFT_LIFT_P, TORQUE_RATIO, false);
+vex::motor RIGHT_LIFT(RIGHT_LIFT_P, TORQUE_RATIO, true);
+vex::motor_group Lift(LEFT_LIFT, RIGHT_LIFT);
 
-vex::motor Claw = vex::motor(CLAW_P, MID_RATIO, true);
+vex::motor Claw(CLAW_P, MID_RATIO, false);
 
 vex::controller Controller;
 vex::competition Competition;
