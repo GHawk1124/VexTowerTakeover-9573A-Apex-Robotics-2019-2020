@@ -11,7 +11,7 @@
 
 /* Consts */
 #define LIFT_SPEED 75
-#define INTAKE_SPEED 100
+#define INTAKE_SPEED 85
 #define MAX_SPEED 75
 #define MAX_SPEED_AUTON 100
 #define HALF_SPEED 50
@@ -34,12 +34,12 @@
 /* Ports */
 
 // Define for each Robot
-#define RF_P vex::PORT2
-#define LF_P vex::PORT1
+#define RF_P vex::PORT19
+#define LF_P vex::PORT12
 #define RB_P vex::PORT20
 #define LB_P vex::PORT11
 #define LIFT_P vex::PORT9
 #define INTAKE_1_P vex::PORT10
-#define INTAKE_2_P vex::PORT1
+#define INTAKE_2_P vex::PORT2
 
 #endif
