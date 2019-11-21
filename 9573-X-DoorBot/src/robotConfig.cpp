@@ -12,6 +12,7 @@ vex::motor_group driveTrainRight(RF, RB);
 vex::motor_group driveTrainXLeft(LF, RB);
 vex::motor_group driveTrainXRight(RF, LB);
 vex::motor_group driveTrain(LF, LB, RF, RB);
+vex::drivetrain dtdriveTrain(driveTrainLeft, driveTrainRight, 350, 330, 50.5);
 
 vex::motor LEFT_LIFT(LEFT_LIFT_P, TORQUE_RATIO, false);
 vex::motor RIGHT_LIFT(RIGHT_LIFT_P, TORQUE_RATIO, true);

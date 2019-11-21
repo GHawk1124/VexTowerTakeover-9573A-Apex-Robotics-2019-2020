@@ -54,6 +54,7 @@ extern vex::motor_group driveTrainRight;
 extern vex::motor_group driveTrainXLeft;
 extern vex::motor_group driveTrainXRight;
 extern vex::motor_group driveTrain;
+extern vex::drivetrain dtdriveTrain;
 
 extern vex::motor LEFT_LIFT;
 extern vex::motor RIGHT_LIFT;

@@ -1,42 +1,19 @@
 #include "auton.h"
 #include "robotConfig.h"
 #include "userControl.h"
+#include <cmath>
 
-static volatile double rfr;
-static volatile double rbr;
-static volatile double lfr;
-static volatile double lbr;
+#define STACK_4
 
 void driveInchesGAR(double inches, int speed, int timeToSleep,
                  vex::brakeType brakeType) {
   driveTrain.setStopping(brakeType);
-  if (inches > 0) {
-    driveTrain.driveFor(FWD, inches, vex::distanceUnits::in, speed, vPCT, true);
-  } else {
-    driveTrain.driveFor(BWD, std::abs(inches), vex::distanceUnits::in, speed,
-                        vPCT, true);
-  }
+  dtdriveTrain.driveFor(BWD, inches, vex::distanceUnits::in, speed, vPCT, true);
   vex::this_thread::sleep_for(timeToSleep);
 }
 
-void newDriveInchesGar(double inches, int speed, int timeToSleep,
-                 vex::brakeType brakeType) {
-	// Setup
-	{
-	vex::thread rfM (RF.rotation);
-	vex::thread rbM (RB.rotation);
-	vex::thread lfM (LF.rotation);
-	vex::thread lbM (RF.rotation);
-	}
-
-
-}
-
 void pre_auton() {
-  RF.setStopping(MOTOR_STOPPING_DRIVE);
-  LF.setStopping(MOTOR_STOPPING_DRIVE);
-  RB.setStopping(MOTOR_STOPPING_DRIVE);
-  LB.setStopping(MOTOR_STOPPING_DRIVE);
+  dtdriveTrain.setStopping(BRAKE);
   Lift.setMaxTorque(100, PCT);
   Lift.setStopping(MOTOR_STOPPING_AUTON);
   Claw.setMaxTorque(100, PCT);
@@ -55,31 +32,15 @@ void pre_drive() {
 }
 
 void autonomous() {
-#ifdef LEFT_TURN
-  driveInchesGAR(35, 20, 500, BRAKE);
-  driveInchesGAR(-22.5, 40, 200, BRAKE);
-  Intake.spin(FWD, 10, vPCT);
-  driveTrain.turnFor(LEFT, 116, DEG);
-  Intake.stop();
-  vex::this_thread::sleep_for(200);
-  driveInchesGAR(13, 20, 200, BRAKE);
-  Intakef(BWD, 1250);
-  Liftf(FWD, 1000);
-  driveInchesGAR(-12, 20, 500, BRAKE);
-  Liftf(BWD, 1000);
-#endif
-#ifdef RIGHT_TURN
-  driveInchesGAR(40, 20, 500, BRAKE);
-  driveInchesGAR(-27.5, 40, 200, BRAKE);
-  Intake.spin(FWD, 10, vPCT);
-  driveTrain.turnFor(RIGHT, 119, DEG);
-  Intake.stop();
-  vex::this_thread::sleep_for(200);
-  driveInchesGAR(11, 20, 200, BRAKE);
-  Intakef(BWD, 1250);
-  Liftf(FWD, 1000);
-  driveInchesGAR(-12, 20, 500, BRAKE);
-  Liftf(BWD, 1000);
+#ifdef STACK_4
+  Claw.spinFor(.1, SEC, -50, vPCT);
+  driveInchesGAR(27.25, 60, 500, BRAKE);
+  Claw.spinFor(.7, SEC, -50, vPCT);
+  Claw.spin(BWD, 100, vPCT);
+  Lift.spinFor(.1, SEC, 50, vPCT);
+  Lift.stop(HOLD);
+  driveInchesGAR(-27.25, 60, 500, BRAKE);
+  vex::this_thread::sleep_for(2000000);
 #endif
 #ifdef SIMPLE
   driveInchesGAR(12, 30, 300, BRAKE);
