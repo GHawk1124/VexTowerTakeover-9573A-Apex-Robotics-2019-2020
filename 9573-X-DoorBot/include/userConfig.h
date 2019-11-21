@@ -6,7 +6,7 @@
 // Sets the Stopping Type for Auton and Drive
 // Hold: Motor holds at end position, Brake: Hardstop forces motor at end
 // position, Coast: Motor stops due to friction
-#define MOTOR_STOPPING_AUTON COAST // HOLD : BRAKE : COAST
+#define MOTOR_STOPPING_AUTON BRAKE // HOLD : BRAKE : COAST
 #define MOTOR_STOPPING_DRIVE COAST // HOLD : BRAKE : COAST
 
 /* Robot */
@@ -14,7 +14,7 @@
 // Define for each Robot
 #define WHEEL_DIAMETER 4.00 // FLOAT
 #define PI 3.14159265358
-#define BOT_WIDTH 9.50                 // FLOAT
+#define BOT_WIDTH 13.0                 // FLOAT
 
 #endif
 

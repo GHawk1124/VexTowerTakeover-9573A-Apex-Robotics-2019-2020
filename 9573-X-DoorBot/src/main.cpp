@@ -43,8 +43,8 @@ void autonomous() {
 }
 
 void usercontrol() {
-  //autonomous();
-  //pre_auton();
+  pre_auton();
+  autonomous();
   pre_drive();
 
   Threads::t_Drive::tc_Drive();
