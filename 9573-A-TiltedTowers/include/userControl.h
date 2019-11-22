@@ -3,6 +3,8 @@
 
 #include "robotConfig.h"
 
+void slowdownScalar();
+
 // Includes all UserControl Threads
 namespace Threads {
 

@@ -7,10 +7,10 @@
 // Two Stick Arcade: Left Stick Controls Forward/Backward, Right Stick Controls
 // Left/Right Tank: Left Stick Controls Forward/Backward Left Side of Bot, Right
 // Stick Controls Forward/Backward Right Side of Bot
-#define DRIVE_TYPE 3 // 2 SS_ARCADE : 3 TS_Arcade : 1 TANK
+#define DRIVE_TYPE 1 // 2 SS_ARCADE : 3 TS_Arcade : 1 TANK
 
 /* Consts */
-#define LIFT_SPEED 75
+#define LIFT_SPEED 65
 #define INTAKE_SPEED 85
 #define MAX_SPEED 75
 #define MAX_SPEED_AUTON 100
