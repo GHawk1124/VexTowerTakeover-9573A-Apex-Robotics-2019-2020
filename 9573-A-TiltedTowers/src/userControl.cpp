@@ -66,7 +66,20 @@ void Threads::t_Drive::SS_Arcade() {
 }
 
 void Threads::t_Drive::TS_Arcade() {
+  bool canStart = true;
+  bool canPress = true;
+  float fscalar = 0;
+  float bscalar = 0;
   while (true) {
+    if (canPress && canStart && Controller.ButtonRight.pressing()) {
+      fscalar = 0.8f;
+      bscalar = 0.2f;
+    } else if (Controller.ButtonRight.pressing()) {
+      canPress = false;
+      canStart = true;
+    } else {
+      canStart = false;
+    }
     leftDT.spin(FWD, ((Controller.LEFT_JOY_VERT() + Controller.RIGHT_JOY_HORIZ()) * DRIVE_TRAIN_SPEED_RATIO),
             vPCT);
     rightDT.spin(FWD, ((Controller.LEFT_JOY_VERT() - Controller.RIGHT_JOY_HORIZ()) * DRIVE_TRAIN_SPEED_RATIO),

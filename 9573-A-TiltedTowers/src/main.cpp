@@ -2,7 +2,7 @@
 #include "robotConfig.h"
 #include "userControl.h"
 
-#define LEFT_TURN
+#define STACK_UNPROTECTED_BLUE
 
 void pre_auton() {
   driveTrain.setStopping(MOTOR_STOPPING_AUTON);
@@ -21,7 +21,7 @@ void pre_drive() {
 }
 
 void autonomous() {
-#ifdef LEFT_TURN
+#ifdef STACK_UNPROTECTED_BLUE
   driveInches(35, 20, true, 500, BRAKE);
   driveInches(-22.5, 40, true, 200, BRAKE);
   Intake.spin(FWD, 10, vPCT);
@@ -34,24 +34,31 @@ void autonomous() {
   driveInches(-12, 20, 500, false, BRAKE);
   Liftf(BWD, 1000);
 #endif
-#ifdef RIGHT_TURN
-  driveInches(40, 20, true, 500, BRAKE);
-  driveInches(-27.5, 40, true, 200, BRAKE);
+#ifdef STACK_PROTECTED_BLUE
+// TODO
+#endif
+#ifdef STACK_UNPROTECTED_RED
+  driveInches(35, 20, true, 500, BRAKE);
+  driveInches(-22.5, 40, true, 200, BRAKE);
   Intake.spin(FWD, 10, vPCT);
-  driveTrain.turnFor(RIGHT, 119, DEG);
+  driveTrain.turnFor(RIGHT, 116, DEG);
   Intake.stop();
   vex::this_thread::sleep_for(200);
-  driveInches(11, 20, 200, false, BRAKE);
+  driveInches(13, 20, 200, false, BRAKE);
   Intakef(BWD, 1250);
   Liftf(FWD, 1000);
   driveInches(-12, 20, 500, false, BRAKE);
   Liftf(BWD, 1000);
+#endif
+#ifdef STACK_PROTECTED_RED
+// TODO
 #endif
 #ifdef SIMPLE
   driveInches(12, 30, 300, false, BRAKE);
   vex::this_thread::sleep_for(300);
   driveInches(-10, 30, 300, false, BRAKE);
 #endif
+vex::this_thread::sleep_for(2000);
 }
 
 void usercontrol() {

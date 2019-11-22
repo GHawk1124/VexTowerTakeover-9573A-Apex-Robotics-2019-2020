@@ -8,7 +8,7 @@ vex::motor RB (RB_P, MID_RATIO, true);
 vex::motor LB (LB_P, MID_RATIO, false);
 vex::motor_group rightDT (RF, RB);
 vex::motor_group leftDT (LF, LB);
-vex::drivetrain driveTrain (leftDT, rightDT);
+vex::drivetrain driveTrain (leftDT, rightDT, 319.2, 365, 190, vex::distanceUnits::mm);
 
 vex::motor LIFT (LIFT_P, TORQUE_RATIO, true);
 vex::motor_group Lift (LIFT);
