@@ -23,9 +23,7 @@ void spinRight() {
 }
 
 void spinLift() {
-  while (std::abs(liftDeg - Lift.rotation(DEG)) >= 0.01) {
-    Lift.spin(FWD, MAX_SPEED_AUTON * (liftDeg - Lift.rotation(DEG)), vPCT);
-  }
+    Lift.rotateTo(liftDeg, DEG, true);
 }
 
 void spinXLeft() {
@@ -84,7 +82,10 @@ void pointTurn(double degrees) {
   startDriveTrain();
 }
 
-void closeClaw() { Claw.rotateTo(-100, DEG); }
+void closeClaw() {
+  Claw.spin(BWD, 100, vPCT);
+  vex::this_thread::sleep_for(1000);
+}
 
 void openClaw() {
   Claw.stop();
@@ -94,4 +95,5 @@ void openClaw() {
 void liftTo(double degrees) {
   liftDeg = degrees;
   startLift();
+  vex::this_thread::sleep_for(100);
 }

@@ -34,7 +34,8 @@ void Threads::t_Lift::run() {
 void Threads::t_Claw::run() {
   Claw.resetRotation();
   while (true) {
-    Claw.rotateTo((Controller.OPEN_CLAW() ? -160 : -400), DEG, false);
+    //Claw.rotateTo((Controller.OPEN_CLAW() ? -160 : -400), DEG, false);
+    Claw.spin(FWD, CLAW_SPEED * (Controller.OPEN_CLAW() - !Controller.OPEN_CLAW()), vPCT);
     vex::this_thread::sleep_for(10);
   }
 }
