@@ -2,23 +2,16 @@
 #include "robotConfig.h"
 #include "userControl.h"
 
-
 void pre_auton() {
-  RF.setStopping(MOTOR_STOPPING_DRIVE);
-  LF.setStopping(MOTOR_STOPPING_DRIVE);
-  RB.setStopping(MOTOR_STOPPING_DRIVE);
-  LB.setStopping(MOTOR_STOPPING_DRIVE);
+  driveTrain.setStopping(MOTOR_STOPPING_DRIVE);
   Lift.setMaxTorque(100, PCT);
-  Lift.setStopping(MOTOR_STOPPING_AUTON);
+  Lift.setStopping(HOLD);
   Claw.setMaxTorque(100, PCT);
   Claw.setStopping(COAST);
 }
 
 void pre_drive() {
-  RF.setStopping(MOTOR_STOPPING_DRIVE);
-  LF.setStopping(MOTOR_STOPPING_DRIVE);
-  RB.setStopping(MOTOR_STOPPING_DRIVE);
-  LB.setStopping(MOTOR_STOPPING_DRIVE);
+  driveTrain.setStopping(MOTOR_STOPPING_DRIVE);
   Lift.setMaxTorque(100, PCT);
   Lift.setStopping(HOLD);
   Claw.setMaxTorque(100, PCT);
@@ -26,20 +19,29 @@ void pre_drive() {
 }
 
 void autonomous() {
-  driveInches(39);
-  driveInches(-15);
-  strafeInches(-6.5);
-  pointTurn(-90);
-  driveInches(7);
-  closeClaw();
-  driveInches(22);
-  pointTurn(-90);
-  driveInches(11);
-  // Not exact
-  //liftTo(180);
-  driveInches(2);
-  openClaw();
-  driveInches(-12);
+  // Side as one is left, anything else as right, team as 1 is blue, -1 is red
+  int side = 1;
+  int team = -1;
+  if (side == 1) {
+    strafeInches(team * 5.5);
+    strafeInches(team * -5.5);
+    driveInches(14.5);
+    closeClaw();
+    liftTo(110);
+    pointTurn(team * 90);
+    strafeInches(team * 10.8);
+    driveInches(11.5);
+    openClaw();
+    driveInches(-11);
+  } else {
+    strafeInches(-5.5);
+    strafeInches(17.5);
+    driveInches(3.5);
+    closeClaw();
+    liftTo(110);
+    driveInches(-6);
+    strafeInches(-17.5);
+  }
 }
 
 void usercontrol() {
