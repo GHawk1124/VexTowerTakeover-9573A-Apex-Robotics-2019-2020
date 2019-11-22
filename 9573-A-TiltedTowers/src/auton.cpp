@@ -8,8 +8,8 @@ void driveInches(double inches, int speed, bool intake, int timeToSleep,
   driveTrain.setStopping(brakeType);
   Intake.spin(FWD, intake * MAX_SPEED, vPCT);
   driveTrain.driveFor(FWD, inches, vex::distanceUnits::in, speed, vPCT, true);
-  Intake.stop();
   vex::this_thread::sleep_for(timeToSleep);
+  Intake.stop();
 }
 
 void newDriveInches(double inches, bool intake, int timeToSleep,
@@ -60,10 +60,14 @@ void bSwingTurn(double degrees, vex::brakeType brakeType) {
   }
 }
 
-void Liftf(vex::directionType dir, float ltime) {
-  Lift.spin(dir, LIFT_SPEED, vPCT);
-  vex::this_thread::sleep_for(ltime);
-  Lift.stop();
+void Liftf(int timeToWait, bool blocking) {
+  const uint8_t Tolerance = 40;
+  if (std::abs(Lift.rotation(DEG)) < Tolerance) {
+    Lift.rotateTo(400, DEG, -LIFT_SPEED/2, vPCT, blocking);
+  } else {
+    Lift.rotateTo(0, DEG, LIFT_SPEED/2, vPCT, blocking);
+  }
+  vex::this_thread::sleep_for(timeToWait);
 }
 
 void Intakef(vex::directionType dir, float ltime) {
