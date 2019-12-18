@@ -12,6 +12,7 @@ void spinLeft() {
     driveTrainLeft.spin(
         FWD, MAX_SPEED_AUTON * (leftRots - driveTrainLeft.rotation(ROT)), vPCT);
   }
+  driveTrainLeft.stop();
 }
 
 void spinRight() {
@@ -20,11 +21,10 @@ void spinRight() {
         FWD, MAX_SPEED_AUTON * (rightRots - driveTrainRight.rotation(ROT)),
         vPCT);
   }
+  driveTrainRight.stop();
 }
 
-void spinLift() {
-    Lift.rotateTo(liftDeg, DEG, true);
-}
+void spinLift() { Lift.rotateTo(liftDeg, DEG, 100, vPCT, true); }
 
 void spinXLeft() {
   while (std::abs(leftXRots - driveTrainXLeft.rotation(ROT)) >= 0.01) {
@@ -32,6 +32,7 @@ void spinXLeft() {
         FWD, MAX_SPEED_AUTON * (leftXRots - driveTrainXLeft.rotation(ROT)),
         vPCT);
   }
+  driveTrainXLeft.stop();
 }
 
 void spinXRight() {
@@ -40,6 +41,7 @@ void spinXRight() {
         FWD, MAX_SPEED_AUTON * (rightXRots - driveTrainXRight.rotation(ROT)),
         vPCT);
   }
+  driveTrainXRight.stop();
 }
 
 void startDriveTrain() {
@@ -59,7 +61,6 @@ void startDriveXTrain() {
 }
 
 void startLift() {
-  Lift.resetRotation();
   vex::thread lift(spinLift);
   lift.join();
 }
@@ -76,7 +77,7 @@ void strafeInches(double inches) {
 }
 
 void pointTurn(double degrees) {
-  double rots = (2 * BOT_WIDTH * PI * (degrees / 360) / WHEEL_CIRCUM);
+  double rots = 2 * BOT_WIDTH * PI * (degrees / 360) / WHEEL_CIRCUM;
   leftRots = rots;
   rightRots = -rots;
   startDriveTrain();
@@ -89,7 +90,7 @@ void closeClaw() {
 
 void openClaw() {
   Claw.stop();
-  Claw.rotateTo(0, ROT);
+  Claw.rotateTo(0, DEG, 100, vPCT);
 }
 
 void liftTo(double degrees) {

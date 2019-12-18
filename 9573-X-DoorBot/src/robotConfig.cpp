@@ -1,4 +1,3 @@
-
 #include "robotConfig.h"
 
 vex::brain Brain;

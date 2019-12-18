@@ -20,11 +20,18 @@ void Threads::t_Drive::entry() { Threads::t_Drive::mSelf->run(); }
 void Threads::t_Lift::run() {
   Lift.setStopping(HOLD);
   Lift.resetRotation();
+  double ll, rl;
   while (true) {
-    Lift.spin(FWD,
-              LIFT_SPEED * Controller.RAISE_LIFT() -
-                  LIFT_SPEED / 2 * Controller.LOWER_LIFT(),
-              vPCT);
+    ll = LEFT_LIFT.rotation(DEG);
+    rl = RIGHT_LIFT.rotation(DEG);
+    LEFT_LIFT.spin(FWD,
+                   LIFT_SPEED * Controller.RAISE_LIFT() -
+                       LIFT_SPEED * Controller.LOWER_LIFT() + rl - ll,
+                   vPCT);
+    RIGHT_LIFT.spin(FWD,
+                   LIFT_SPEED * Controller.RAISE_LIFT() -
+                       LIFT_SPEED * Controller.LOWER_LIFT() + ll - rl,
+                   vPCT);
     //    Lift.spin(FWD, LIFT_SPEED * (Controller.RAISE_LIFT() -
     //    Controller.LOWER_LIFT()), vPCT);
     vex::this_thread::sleep_for(10);
@@ -32,10 +39,14 @@ void Threads::t_Lift::run() {
 }
 
 void Threads::t_Claw::run() {
-  Claw.resetRotation();
+  // Claw.resetRotation();
   while (true) {
-    //Claw.rotateTo((Controller.OPEN_CLAW() ? -160 : -400), DEG, false);
-    Claw.spin(FWD, CLAW_SPEED * (Controller.OPEN_CLAW() - !Controller.OPEN_CLAW()), vPCT);
+    // Claw.rotateTo((Controller.OPEN_CLAW() ? -160 : -400), DEG, false);
+    Claw.spin(FWD,
+              CLAW_SPEED *
+                  ((Controller.OPEN_CLAW() && Claw.rotation(DEG) <= -60) -
+                   !Controller.OPEN_CLAW()),
+              vPCT);
     vex::this_thread::sleep_for(10);
   }
 }

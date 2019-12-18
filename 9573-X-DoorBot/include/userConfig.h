@@ -12,9 +12,9 @@
 /* Robot */
 
 // Define for each Robot
-#define WHEEL_DIAMETER 4.00 // FLOAT
+#define WHEEL_DIAMETER 4.0625 // FLOAT
 #define PI 3.14159265358
-#define BOT_WIDTH 13.0                 // FLOAT
+#define BOT_WIDTH 13.0 // FLOAT
 
 #endif
 
@@ -39,7 +39,7 @@
 #define HALF_SPEED 50
 #define OFF 0
 
-//Button Maps
+// Button Maps
 #define RAISE_LIFT ButtonR1.pressing
 #define LOWER_LIFT ButtonR2.pressing
 #define OPEN_CLAW ButtonL1.pressing
