@@ -43,7 +43,7 @@ void fSwingTurn(double degrees,
 void bSwingTurn(double degrees,
                 vex::brakeType brakeType = MOTOR_STOPPING_AUTON);
 
-void Liftf(vex::directionType dir, float ltime);
+void Liftf(int timeToWait=0, bool blocking=true);
 
 void Intakef(vex::directionType dir, float ltime);
 

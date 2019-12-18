@@ -2,12 +2,13 @@
 #include "robotConfig.h"
 #include "userControl.h"
 
-#define STACK_UNPROTECTED_BLUE
+#define SIMPLE
 
 void pre_auton() {
   driveTrain.setStopping(MOTOR_STOPPING_AUTON);
-  Lift.setMaxTorque(100, PCT);
+  Lift.setMaxTorque(110, PCT);
   Lift.setStopping(MOTOR_STOPPING_AUTON);
+  Lift.resetRotation();
   Intake.setMaxTorque(100, PCT);
   Intake.setStopping(MOTOR_STOPPING_AUTON);
 }
@@ -22,33 +23,37 @@ void pre_drive() {
 
 void autonomous() {
 #ifdef STACK_UNPROTECTED_BLUE
-  driveInches(35, 20, true, 500, BRAKE);
-  driveInches(-22.5, 40, true, 200, BRAKE);
-  Intake.spin(FWD, 10, vPCT);
-  driveTrain.turnFor(LEFT, 116, DEG);
+  driveInches(25, 20, true, 500, BRAKE);
+  driveInches(10, 20, true, 500, BRAKE);
+  driveInches(10, 20, true, 500, BRAKE);
+  driveInches(-32.5, 40, true, 200, BRAKE);
+  Intake.spin(FWD, MAX_SPEED, vPCT);
+  driveTrain.turnFor(LEFT, 93, DEG);
   Intake.stop();
-  vex::this_thread::sleep_for(200);
-  driveInches(13, 20, 200, false, BRAKE);
-  Intakef(BWD, 1250);
-  Liftf(FWD, 1000);
-  driveInches(-12, 20, 500, false, BRAKE);
-  Liftf(BWD, 1000);
+  driveInches(9, 20, 200, false, BRAKE);
+  Intakef(BWD, 625);
+  Liftf(1000, true);
+  driveInches(1, 100, 0, false, COAST);
+  driveInches(-12, 20, false, 500, BRAKE);
+  Liftf(250, true);
 #endif
 #ifdef STACK_PROTECTED_BLUE
 // TODO
 #endif
 #ifdef STACK_UNPROTECTED_RED
-  driveInches(35, 20, true, 500, BRAKE);
-  driveInches(-22.5, 40, true, 200, BRAKE);
-  Intake.spin(FWD, 10, vPCT);
-  driveTrain.turnFor(RIGHT, 116, DEG);
+  driveInches(25, 20, true, 500, BRAKE);
+  driveInches(10, 20, true, 500, BRAKE);
+  driveInches(10, 20, true, 500, BRAKE);
+  driveInches(-32.5, 40, true, 200, BRAKE);
+  Intake.spin(FWD, MAX_SPEED, vPCT);
+  driveTrain.turnFor(RIGHT, 93, DEG);
   Intake.stop();
-  vex::this_thread::sleep_for(200);
-  driveInches(13, 20, 200, false, BRAKE);
-  Intakef(BWD, 1250);
-  Liftf(FWD, 1000);
-  driveInches(-12, 20, 500, false, BRAKE);
-  Liftf(BWD, 1000);
+  driveInches(9, 20, 200, false, BRAKE);
+  Intakef(BWD, 625);
+  Liftf(1000, true);
+  driveInches(1, 100, 0, false, COAST);
+  driveInches(-12, 20, false, 500, BRAKE);
+  Liftf(250, true);
 #endif
 #ifdef STACK_PROTECTED_RED
 // TODO
