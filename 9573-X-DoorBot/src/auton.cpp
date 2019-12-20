@@ -56,7 +56,6 @@ void startDriveXTrain() {
   driveTrain.resetRotation();
   vex::thread left(spinXLeft);
   vex::thread right(spinXRight);
-  left.join();
   right.join();
 }
 

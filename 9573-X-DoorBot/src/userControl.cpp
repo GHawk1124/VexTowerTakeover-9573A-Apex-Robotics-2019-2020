@@ -20,17 +20,14 @@ void Threads::t_Drive::entry() { Threads::t_Drive::mSelf->run(); }
 void Threads::t_Lift::run() {
   Lift.setStopping(HOLD);
   Lift.resetRotation();
-  double ll, rl;
   while (true) {
-    ll = LEFT_LIFT.rotation(DEG);
-    rl = RIGHT_LIFT.rotation(DEG);
     LEFT_LIFT.spin(FWD,
                    LIFT_SPEED * Controller.RAISE_LIFT() -
-                       LIFT_SPEED * Controller.LOWER_LIFT() + rl - ll,
+                       LIFT_SPEED * Controller.LOWER_LIFT(),
                    vPCT);
     RIGHT_LIFT.spin(FWD,
                    LIFT_SPEED * Controller.RAISE_LIFT() -
-                       LIFT_SPEED * Controller.LOWER_LIFT() + ll - rl,
+                       LIFT_SPEED * Controller.LOWER_LIFT(),
                    vPCT);
     //    Lift.spin(FWD, LIFT_SPEED * (Controller.RAISE_LIFT() -
     //    Controller.LOWER_LIFT()), vPCT);

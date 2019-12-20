@@ -8,7 +8,7 @@ void pre_auton() {
   driveTrain.setStopping(MOTOR_STOPPING_DRIVE);
   Lift.setMaxTorque(100, PCT);
   Lift.setStopping(HOLD);
-  Claw.setMaxTorque(100, PCT); 
+  Claw.setMaxTorque(100, PCT);
   Claw.setStopping(COAST);
 }
 
@@ -44,15 +44,20 @@ void autonomous() {
     driveInches(-11);
   } else {
     strafeInches(team * -5);
-    strafeInches(team * 15.5);
-    driveInches(1);
+    driveInches(3);
     closeClaw();
     liftTo(110);
-    driveInches(-2);
-    strafeInches(team * - 15.5);
+    strafeInches(team * 15.5);
     openClaw();
     liftTo(-10);
+    driveInches(1);
     closeClaw();
+    liftTo(130);
+    pointTurn(team * -90);
+    strafeInches(team * -4.5);
+    driveInches(33);
+    openClaw();
+    driveInches(-11);
   }
 }
 
