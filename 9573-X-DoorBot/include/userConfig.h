@@ -35,7 +35,7 @@
 #define LIFT_SPEED 75
 #define CLAW_SPEED 100
 #define MAX_SPEED 100
-#define MAX_SPEED_AUTON 100
+#define MAX_SPEED_AUTON 15
 #define HALF_SPEED 50
 #define OFF 0
 

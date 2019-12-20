@@ -4,7 +4,7 @@
 #include <cmath>
 
 static const double WHEEL_CIRCUM = WHEEL_DIAMETER * PI;
-static double leftRots = 0, rightRots = 0, leftXRots = 0, rightXRots = 0,
+static volatile double leftRots = 0, rightRots = 0, leftXRots = 0, rightXRots = 0,
               liftDeg = 0;
 
 void spinLeft() {
@@ -48,7 +48,6 @@ void startDriveTrain() {
   driveTrain.resetRotation();
   vex::thread left(spinLeft);
   vex::thread right(spinRight);
-  left.join();
   right.join();
 }
 
