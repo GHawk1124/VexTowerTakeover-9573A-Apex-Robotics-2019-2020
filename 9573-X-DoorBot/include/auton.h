@@ -1,5 +1,6 @@
 #ifndef AUTON
 #define AUTON
+
 #include "robotConfig.h"
 
 void driveInches(double inches);

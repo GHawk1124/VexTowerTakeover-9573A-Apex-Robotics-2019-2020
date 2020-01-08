@@ -22,8 +22,9 @@ void pre_drive() {
 
 void autonomous() {
   Claw.resetRotation();
+  driveInches(24);
   // Side as one is left, anything else as right, team as 1 is blue, -1 is red
-  int side = 0;
+  /*int side = 0;
   int team = 1;
   if (side == 1) {
     strafeInches(team * 5.5);
@@ -58,11 +59,10 @@ void autonomous() {
     driveInches(33);
     openClaw();
     driveInches(-11);
-  }
+  }*/
 }
 
 void usercontrol() {
-  autonomous();
   pre_drive();
 
   Threads::t_Drive::tc_Drive();
