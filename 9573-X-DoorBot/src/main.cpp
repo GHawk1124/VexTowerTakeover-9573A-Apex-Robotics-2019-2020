@@ -22,27 +22,26 @@ void pre_drive() {
 
 void autonomous() {
   Claw.resetRotation();
-  driveInches(24);
   // Side as one is left, anything else as right, team as 1 is blue, -1 is red
-  /*int side = 0;
+  int side = 1;
   int team = 1;
   if (side == 1) {
     strafeInches(team * 5.5);
-    strafeInches(team * -5);
+    strafeInches(team * -5.5);
     driveInches(13.5);
     closeClaw();
     liftTo(100);
-    driveInches(4.7);
+    driveInches(4);
     openClaw();
     liftTo(-10);
     driveInches(0.5);
     closeClaw();
-    liftTo(120);
+    liftTo(130);
     pointTurn(team * 90);
-    strafeInches(team * 13);
-    driveInches(15);
+    strafeInches(team * 25);
+    driveInches(7);
     openClaw();
-    driveInches(-11);
+    driveInches(-10);
   } else {
     strafeInches(team * -5);
     driveInches(3);
@@ -59,7 +58,7 @@ void autonomous() {
     driveInches(33);
     openClaw();
     driveInches(-11);
-  }*/
+  }
 }
 
 void usercontrol() {

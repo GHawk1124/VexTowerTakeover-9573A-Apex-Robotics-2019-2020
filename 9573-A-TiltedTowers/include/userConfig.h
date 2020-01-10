@@ -38,7 +38,8 @@
 #define LF_P vex::PORT12
 #define RB_P vex::PORT20
 #define LB_P vex::PORT11
-#define LIFT_P vex::PORT9
+#define STACKER_PORT vex::PORT7
+#define LIFT_P vex::PORT3
 #define INTAKE_1_P vex::PORT10
 #define INTAKE_2_P vex::PORT2
 

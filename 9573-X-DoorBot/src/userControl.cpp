@@ -26,9 +26,9 @@ void Threads::t_Lift::run() {
                        LIFT_SPEED * Controller.LOWER_LIFT(),
                    vPCT);
     RIGHT_LIFT.spin(FWD,
-                   LIFT_SPEED * Controller.RAISE_LIFT() -
-                       LIFT_SPEED * Controller.LOWER_LIFT(),
-                   vPCT);
+                    LIFT_SPEED * Controller.RAISE_LIFT() -
+                        LIFT_SPEED * Controller.LOWER_LIFT(),
+                    vPCT);
     //    Lift.spin(FWD, LIFT_SPEED * (Controller.RAISE_LIFT() -
     //    Controller.LOWER_LIFT()), vPCT);
     vex::this_thread::sleep_for(10);

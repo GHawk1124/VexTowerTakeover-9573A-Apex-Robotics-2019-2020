@@ -12,7 +12,7 @@
 /* Robot */
 
 // Define for each Robot
-#define WHEEL_DIAMETER 4.0625 // FLOAT
+#define WHEEL_DIAMETER 4 // FLOAT
 #define PI 3.14159265358
 #define BOT_WIDTH 13.0 // FLOAT
 
