@@ -28,9 +28,9 @@ void autonomous() {
   if (side == 1) {
     strafeInches(team * 5.5);
     strafeInches(team * -5.5);
-    driveInches(13.5);
+    driveInches(6);
     closeClaw();
-    liftTo(100);
+    /*liftTo(100);
     driveInches(4);
     openClaw();
     liftTo(-10);
@@ -41,7 +41,7 @@ void autonomous() {
     strafeInches(team * 25);
     driveInches(7);
     openClaw();
-    driveInches(-10);
+    driveInches(-10);*/
   } else {
     strafeInches(team * -5);
     driveInches(3);
