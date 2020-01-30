@@ -26,28 +26,33 @@ void autonomous() {
   int side = 1;
   int team = 1;
   if (side == 1) {
-    strafeInches(team * 5.5);
-    strafeInches(team * -5.5);
-    driveInches(6);
+    strafeInches(team *6.5);
+    strafeInches(team * -6.5);
+    driveInches(8);
     closeClaw();
-    /*liftTo(100);
-    driveInches(4);
+    liftTo(90);
+    driveInches(3);
+    vex::wait(.1, vex::seconds);
     openClaw();
-    liftTo(-10);
-    driveInches(0.5);
+    liftTo(-15);
+    driveInches(2.75);
+    vex::wait(.1, vex::seconds);
     closeClaw();
-    liftTo(130);
+    vex::wait(.1, vex::seconds);
+    liftTo(140);
     pointTurn(team * 90);
-    strafeInches(team * 25);
-    driveInches(7);
+    strafeInches(team * 15.25);
+    pointTurn(team * 35);
+    driveInches(2.5);
+    liftTo(90);
     openClaw();
-    driveInches(-10);*/
+    driveInches(-5);
   } else {
     strafeInches(team * -5);
     driveInches(3);
     closeClaw();
     liftTo(110);
-    strafeInches(team * 15.5);
+    strafeInches(team * 16.);
     openClaw();
     liftTo(-10);
     driveInches(1);
