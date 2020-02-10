@@ -70,9 +70,8 @@ void usercontrol() {
   pre_drive();
 
   Threads::t_Drive::tc_Drive();
-  Threads::t_Claw::tc_Claw();
-  Threads::t_Lift::tc_Lift();
-
+  //Threads::t_Claw::tc_Claw();
+  //Threads::t_Lift::tc_Lift();
   while (true) {
     vex::this_thread::sleep_for(10);
   }

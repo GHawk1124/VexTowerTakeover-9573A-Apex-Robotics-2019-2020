@@ -34,10 +34,10 @@
 #define HOLD vex::brakeType::hold
 #define COAST vex::brakeType::coast
 // Controller
-#define RIGHT_JOY_VERT Axis2.position
-#define RIGHT_JOY_HORIZ Axis1.position
-#define LEFT_JOY_VERT Axis3.position
-#define LEFT_JOY_HORIZ Axis4.position
+#define RIGHT_JOY_VERT Axis2.value
+#define RIGHT_JOY_HORIZ Axis1.value
+#define LEFT_JOY_VERT Axis3.value
+#define LEFT_JOY_HORIZ Axis4.value
 
 #endif
 

@@ -49,9 +49,28 @@ void Threads::t_Claw::run() {
 }
 
 void Threads::t_Drive::run() {
-  int X1 = 0, X2 = 0, Y1 = 0, deadzone = 15;
+  // int X1 = 0, X2 = 0, Y1 = 0, deadzone = 15;
+  double magnitude, angle, x, y, turn;
   while (true) {
-    Y1 = abs(Controller.LEFT_JOY_VERT()) > deadzone
+    x = Controller.LEFT_JOY_HORIZ();
+    y = Controller.LEFT_JOY_VERT();
+    magnitude = sqrt((x * x) + (y * y));
+    angle = atan2(y, x);
+    Brain.Screen.setCursor(1, 1);
+    Brain.Screen.print(magnitude);
+    Brain.Screen.print(" = m       ");
+    Brain.Screen.newLine();
+    Brain.Screen.print(x);
+    Brain.Screen.print(" = x       ");
+    Brain.Screen.newLine();
+    Brain.Screen.print(y);
+    Brain.Screen.print(" = y        ");
+    // RF.spin(FWD, sin(angle - PI / 4) * magnitude, vPCT);
+    // LB.spin(FWD, sin(angle - PI / 4) * magnitude, vPCT);
+    // LF.spin(FWD, sin(angle + PI / 4) * magnitude, vPCT);
+    // RB.spin(FWD, sin(angle + PI / 4) * magnitude, vPCT);
+
+    /*Y1 = abs(Controller.LEFT_JOY_VERT()) > deadzone
              ? -Controller.LEFT_JOY_VERT()
              : 0;
     X1 = abs(Controller.LEFT_JOY_HORIZ()) > deadzone
@@ -63,6 +82,6 @@ void Threads::t_Drive::run() {
     LF.spin(FWD, Y1 - X2 - X1, vPCT);
     LB.spin(FWD, Y1 - X2 + X1, vPCT);
     RF.spin(FWD, Y1 + X2 + X1, vPCT);
-    RB.spin(FWD, Y1 + X2 - X1, vPCT);
+    RB.spin(FWD, Y1 + X2 - X1, vPCT);*/
   }
 }
