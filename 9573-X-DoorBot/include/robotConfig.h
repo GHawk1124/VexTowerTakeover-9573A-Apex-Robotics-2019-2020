@@ -59,7 +59,9 @@ extern vex::motor LEFT_LIFT;
 extern vex::motor RIGHT_LIFT;
 extern vex::motor_group Lift;
 
-extern vex::motor Claw;
+extern vex::motor ClawLeft;
+extern vex::motor ClawRight;
+extern vex::motor_group Claw;
 
 extern vex::controller Controller;
 extern vex::competition Competition;

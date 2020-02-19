@@ -3,9 +3,7 @@
 
 #include "robotConfig.h"
 
-void driveInches(double inches);
-
-void strafeInches(double inches);
+void driveTo(double xInches, double yInches);
 
 void pointTurn(double degrees);
 

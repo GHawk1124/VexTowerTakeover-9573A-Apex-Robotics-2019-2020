@@ -3,7 +3,7 @@
 #include "userConfig.h"
 #include <cmath>
 
-static const double WHEEL_CIRCUM = WHEEL_DIAMETER * PI;
+/*static const double WHEEL_CIRCUM = WHEEL_DIAMETER * PI;
 static const int MAX_SPEED_AUTON = 100 - MIN_SPEED_AUTON;
 static volatile double leftRots = 0, rightRots = 0, leftXRots = 0,
                        rightXRots = 0, liftDeg = 0;
@@ -136,4 +136,21 @@ void openClaw() {
 void liftTo(double degrees) {
   liftDeg = degrees;
   startLift();
+}
+Don't use me.
+*/
+
+void driveTo(double xInches, double yInches) {
+  double rots = sqrt((xInches * xInches) + (yInches * yInches)) / WHEEL_CIRCUM;
+  double angle = atan2(yInches, xInches);
+  RF.spin(FWD, sin(angle - PI / 4) * 100, vPCT);
+  LB.spin(FWD, sin(angle - PI / 4) * 100, vPCT);
+  LF.spin(FWD, sin(angle + PI / 4) * 100, vPCT);
+  RB.spin(FWD, sin(angle + PI / 4) * 100, vPCT);
+  while (fabs(((RF.rotation(ROT) + LF.rotation(ROT) + RB.rotation(ROT) +
+                LB.rotation(ROT)) /
+               4) -
+              rots) <= 0.01) {
+  }
+  driveTrain.stop(MOTOR_STOPPING_AUTON);
 }
