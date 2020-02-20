@@ -35,11 +35,8 @@ void Threads::t_Lift::run() {
 
 void Threads::t_Claw::run() {
   while (true) {
-    Claw.spin(FWD,
-              CLAW_SPEED *
-                  ((Controller.OPEN_CLAW() && Claw.rotation(DEG) <= -60) -
-                   !Controller.OPEN_CLAW()),
-              vPCT);
+    ClawLeft.rotateTo(!(Controller.OPEN_CLAW()) * -540, DEG, 100, vPCT, false);
+    ClawRight.rotateTo(!(Controller.OPEN_CLAW()) * -540, DEG, 100, vPCT, false);
     vex::this_thread::sleep_for(10);
   }
 }
@@ -52,10 +49,10 @@ void Threads::t_Drive::run() {
     turn = Controller.RIGHT_JOY_HORIZ();
     magnitude = sqrt((x * x) + (y * y));
     angle = atan2(y, x);
-    RF.spin(FWD, sin(angle - PI / 4) * magnitude + turn, vPCT);
-    LB.spin(FWD, sin(angle - PI / 4) * magnitude - turn, vPCT);
-    LF.spin(FWD, sin(angle + PI / 4) * magnitude - turn, vPCT);
-    RB.spin(FWD, sin(angle + PI / 4) * magnitude + turn, vPCT);
+    RF.spin(FWD, sin(angle - PI / 4) * magnitude - turn, vPCT);
+    LB.spin(FWD, sin(angle - PI / 4) * magnitude + turn, vPCT);
+    LF.spin(FWD, sin(angle + PI / 4) * magnitude + turn, vPCT);
+    RB.spin(FWD, sin(angle + PI / 4) * magnitude - turn, vPCT);
     vex::this_thread::sleep_for(10);
   }
 }

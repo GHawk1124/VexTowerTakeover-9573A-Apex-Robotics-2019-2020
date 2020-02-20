@@ -143,14 +143,19 @@ Don't use me.
 void driveTo(double xInches, double yInches) {
   double rots = sqrt((xInches * xInches) + (yInches * yInches)) / WHEEL_CIRCUM;
   double angle = atan2(yInches, xInches);
-  RF.spin(FWD, sin(angle - PI / 4) * 100, vPCT);
-  LB.spin(FWD, sin(angle - PI / 4) * 100, vPCT);
-  LF.spin(FWD, sin(angle + PI / 4) * 100, vPCT);
-  RB.spin(FWD, sin(angle + PI / 4) * 100, vPCT);
+  double speed;
   while (fabs(((RF.rotation(ROT) + LF.rotation(ROT) + RB.rotation(ROT) +
                 LB.rotation(ROT)) /
                4) -
-              rots) <= 0.01) {
+              rots) >= 0.01) {
+    speed = fabs(((RF.rotation(ROT) + LF.rotation(ROT) + RB.rotation(ROT) +
+                LB.rotation(ROT)) /
+               4) -
+              rots) * 100;
+    RF.spin(FWD, sin(angle - PI / 4) * speed, vPCT);
+    LB.spin(FWD, sin(angle - PI / 4) * speed, vPCT);
+    LF.spin(FWD, sin(angle + PI / 4) * speed, vPCT);
+    RB.spin(FWD, sin(angle + PI / 4) * speed, vPCT);
   }
   driveTrain.stop(MOTOR_STOPPING_AUTON);
 }

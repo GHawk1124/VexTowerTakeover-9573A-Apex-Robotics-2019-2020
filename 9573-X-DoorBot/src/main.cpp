@@ -3,27 +3,34 @@
 #include "userControl.h"
 
 void pre_auton() {
-  Claw.resetRotation();
+  ClawLeft.resetRotation();
+  ClawRight.resetRotation();
   Lift.resetRotation();
   driveTrain.setStopping(MOTOR_STOPPING_DRIVE);
   Lift.setMaxTorque(100, PCT);
   Lift.setStopping(HOLD);
-  Claw.setMaxTorque(100, PCT);
-  Claw.setStopping(COAST);
+  ClawLeft.setMaxTorque(100, PCT);
+  ClawRight.setMaxTorque(100, PCT);
+  ClawLeft.setStopping(COAST);
+  ClawRight.setStopping(COAST);
 }
 
 void pre_drive() {
   driveTrain.setStopping(MOTOR_STOPPING_DRIVE);
   Lift.setMaxTorque(100, PCT);
   Lift.setStopping(HOLD);
-  Claw.setMaxTorque(100, PCT);
-  Claw.setStopping(COAST);
+  ClawLeft.setMaxTorque(100, PCT);
+  ClawRight.setStopping(COAST);
+  ClawRight.setMaxTorque(100, PCT);
+  ClawLeft.setStopping(COAST);
 }
 
 void autonomous() {
-  Claw.resetRotation();
+  ClawLeft.resetRotation();
+  ClawRight.resetRotation();
   // Side as one is left, anything else as right, team as 1 is blue, -1 is red
-  int side = 1;
+  driveTo(0, 1);
+  /*int side = 1;
   int team = 1;
   if (side == 1) {
     strafeInches(team *6.5);
@@ -63,15 +70,15 @@ void autonomous() {
     driveInches(33);
     openClaw();
     driveInches(-11);
-  }
+  }*/
 }
 
 void usercontrol() {
   pre_drive();
 
   Threads::t_Drive::tc_Drive();
-  //Threads::t_Claw::tc_Claw();
-  //Threads::t_Lift::tc_Lift();
+  Threads::t_Claw::tc_Claw();
+  Threads::t_Lift::tc_Lift();
   while (true) {
     vex::this_thread::sleep_for(10);
   }
