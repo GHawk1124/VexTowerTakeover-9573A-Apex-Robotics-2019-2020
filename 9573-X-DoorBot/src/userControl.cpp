@@ -1,3 +1,4 @@
+
 #include "userControl.h"
 #include <cmath>
 
@@ -34,9 +35,11 @@ void Threads::t_Lift::run() {
 }
 
 void Threads::t_Claw::run() {
+  bool close = false;
   while (true) {
-    ClawLeft.rotateTo(!(Controller.OPEN_CLAW()) * -540, DEG, 100, vPCT, false);
-    ClawRight.rotateTo(!(Controller.OPEN_CLAW()) * -540, DEG, 100, vPCT, false);
+    close = Controller.CLOSE_CLAW();
+    ClawLeft.rotateTo(close * -540, DEG, 100, vPCT, false);
+    ClawRight.rotateTo(close * -540, DEG, 100, vPCT, false);
     vex::this_thread::sleep_for(10);
   }
 }

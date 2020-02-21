@@ -29,7 +29,8 @@ void autonomous() {
   ClawLeft.resetRotation();
   ClawRight.resetRotation();
   // Side as one is left, anything else as right, team as 1 is blue, -1 is red
-  driveTo(0, 1);
+  strafeInches(24);
+  strafeInches(-24);
   /*int side = 1;
   int team = 1;
   if (side == 1) {
