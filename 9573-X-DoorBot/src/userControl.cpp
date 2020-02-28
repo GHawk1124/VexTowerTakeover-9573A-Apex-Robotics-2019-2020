@@ -21,25 +21,26 @@ void Threads::t_Drive::entry() { Threads::t_Drive::mSelf->run(); }
 void Threads::t_Lift::run() {
   Lift.setStopping(HOLD);
   Lift.resetRotation();
+  double rl, ll;
   while (true) {
+    rl = RIGHT_LIFT.rotation(DEG);
+    ll = LEFT_LIFT.rotation(DEG);
     LEFT_LIFT.spin(FWD,
                    LIFT_SPEED * Controller.RAISE_LIFT() -
-                       LIFT_SPEED * Controller.LOWER_LIFT(),
+                       LIFT_SPEED * Controller.LOWER_LIFT() + rl - ll,
                    vPCT);
     RIGHT_LIFT.spin(FWD,
                     LIFT_SPEED * Controller.RAISE_LIFT() -
-                        LIFT_SPEED * Controller.LOWER_LIFT(),
+                        LIFT_SPEED * Controller.LOWER_LIFT() + ll - rl,
                     vPCT);
     vex::this_thread::sleep_for(10);
   }
 }
 
 void Threads::t_Claw::run() {
-  bool close = false;
   while (true) {
-    close = Controller.CLOSE_CLAW();
-    ClawLeft.rotateTo(close * -540, DEG, 100, vPCT, false);
-    ClawRight.rotateTo(close * -540, DEG, 100, vPCT, false);
+    ClawLeft.rotateTo(Controller.CLOSE_CLAW() ? -540 : -360, DEG, 100, vPCT, false);
+    ClawRight.rotateTo(Controller.CLOSE_CLAW() ? -540 : -360, DEG, 100, vPCT, false);
     vex::this_thread::sleep_for(10);
   }
 }

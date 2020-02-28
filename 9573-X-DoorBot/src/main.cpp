@@ -28,50 +28,48 @@ void pre_drive() {
 void autonomous() {
   ClawLeft.resetRotation();
   ClawRight.resetRotation();
-  // Side as one is left, anything else as right, team as 1 is blue, -1 is red
-  strafeInches(24);
-  strafeInches(-24);
-  /*int side = 1;
-  int team = 1;
-  if (side == 1) {
-    strafeInches(team *6.5);
-    strafeInches(team * -6.5);
-    driveInches(8);
+  driveTrain.resetRotation();
+  bool smallGoal = true;
+  // 1 is for blue team, -1 for red
+  int blueTeam = -1;
+  if (smallGoal) {
+    strafeInches(blueTeam * -10);
+    strafeInches(blueTeam * 5.5);
+    driveInches(17);
+    closeClaw();
+    liftTo(115);
+    driveInches(5);
+    openClaw();
+    liftTo(5); 
+    driveInches(1.25);
+    closeClaw();
+    liftTo(135);
+    driveInches(5);
+    liftTo(120);
+    openClaw();
+    driveInches(-1);
+    liftTo(10);
+    driveInches(2);
     closeClaw();
     liftTo(90);
-    driveInches(3);
-    vex::wait(.1, vex::seconds);
-    openClaw();
-    liftTo(-15);
-    driveInches(2.75);
-    vex::wait(.1, vex::seconds);
-    closeClaw();
-    vex::wait(.1, vex::seconds);
-    liftTo(140);
-    pointTurn(team * 90);
-    strafeInches(team * 15.25);
-    pointTurn(team * 35);
-    driveInches(2.5);
-    liftTo(90);
-    openClaw();
-    driveInches(-5);
+    driveInches(-18);
   } else {
-    strafeInches(team * -5);
-    driveInches(3);
+    strafeInches(10 * blueTeam);
+    strafeInches(-13.5 * blueTeam);
+    driveInches(30);
+    strafeInches(-11 * blueTeam);
+    driveInches(2);
+    liftTo(125);
     closeClaw();
-    liftTo(110);
-    strafeInches(team * 16.);
+    driveInches(-25);
+    pointTurn(70 * blueTeam);
+    driveInches(27);  
+    strafeInches(7 * blueTeam);
+    liftTo(160);
+    driveInches(8);
     openClaw();
-    liftTo(-10);
-    driveInches(1);
-    closeClaw();
-    liftTo(130);
-    pointTurn(team * -90);
-    strafeInches(team * -4.5);
-    driveInches(33);
-    openClaw();
-    driveInches(-11);
-  }*/
+    driveInches(-10);    
+  }
 }
 
 void usercontrol() {

@@ -12,10 +12,10 @@
 /* Robot */
 
 // Define for each Robot
-#define WHEEL_DIAMETER 4 // FLOAT
+#define WHEEL_DIAMETER 4.25 // FLOAT
 #define WHEEL_CIRCUM WHEEL_DIAMETER * PI
 #define PI 3.14159265358
-#define BOT_WIDTH 13.0 // FLOAT
+#define BOT_WIDTH 13.5 // FLOAT
 
 #endif
 
@@ -31,7 +31,7 @@
 #define LEFT_LIFT_P vex::PORT20
 #define RIGHT_LIFT_P vex::PORT11
 #define CLAW_LEFT_P vex::PORT10
-#define CLAW_RIGHT_P vex::PORT1
+#define CLAW_RIGHT_P vex::PORT14
 
 // Consts
 #define LIFT_SPEED 100
@@ -45,5 +45,6 @@
 #define RAISE_LIFT ButtonR1.pressing
 #define LOWER_LIFT ButtonR2.pressing
 #define CLOSE_CLAW ButtonL1.pressing
+#define OPEN_CLAW ButtonL2.pressing
 
 #endif
